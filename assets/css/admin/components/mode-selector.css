@@ -1,0 +1,53 @@
+/* 8. Mode Selector */
+.mod-selector {
+    display: flex !important;
+    gap: 30px !important;
+    justify-content: center !important;
+    margin-bottom: 50px !important;
+}
+
+.mod-button {
+    flex: 1 !important;
+    padding: 30px !important;
+    background: white !important;
+    border: 2px solid var(--pos-secondary) !important;
+    border-radius: var(--pos-radius-lg) !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 18px !important;
+    opacity: 0.8 !important;
+    pointer-events: auto !important;
+}
+
+.mod-button:hover {
+    border-color: var(--pos-primary-light) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: var(--pos-shadow-md) !important;
+    opacity: 0.9 !important;
+}
+
+.mod-button.active {
+    border-color: var(--pos-primary) !important;
+    background: var(--pos-secondary) !important;
+    opacity: 1 !important;
+    transform: scale(1.08) !important;
+}
+
+.mod-button.active:hover {
+    transform: scale(1.08) translateY(-2px) !important;
+}
+
+.mod-icon {
+    font-size: 2.5rem !important;
+    line-height: 1 !important;
+}
+
+.mod-label {
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    color: var(--pos-text-main) !important;
+}

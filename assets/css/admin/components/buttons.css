@@ -1,0 +1,59 @@
+/* 7. Buttons */
+.pos-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 18px 36px !important;
+    border-radius: var(--pos-radius-md) !important;
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: none !important;
+    text-decoration: none !important;
+    gap: 14px !important;
+    line-height: 1 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    pointer-events: auto !important;
+}
+
+.pos-btn-primary {
+    background: linear-gradient(135deg, var(--pos-primary), var(--pos-primary-dark)) !important;
+    color: white !important;
+    box-shadow: 0 12px 24px -10px rgba(45, 90, 39, 0.5) !important;
+}
+
+.pos-btn-primary:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 20px 40px -10px rgba(45, 90, 39, 0.6) !important;
+}
+
+.pos-btn-primary:active {
+    transform: translateY(-1px) !important;
+}
+
+.pos-btn-secondary {
+    background: var(--pos-secondary) !important;
+    color: var(--pos-primary-dark) !important;
+    border: 2px solid transparent !important;
+}
+
+.pos-btn-secondary:hover {
+    border-color: var(--pos-primary) !important;
+    background: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--pos-shadow-md) !important;
+}
+
+.pos-btn:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+/* Width utilities */
+.w-full {
+    width: 100% !important;
+}

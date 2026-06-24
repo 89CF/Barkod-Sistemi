@@ -1,0 +1,30 @@
+/* 14. Telegram Settings Specific */
+.telegram-section {
+    background: white !important;
+    border-radius: var(--pos-radius-lg) !important;
+    padding: 45px !important;
+    margin-bottom: 40px !important;
+    box-shadow: var(--pos-shadow-md) !important;
+    border: 1px solid rgba(45, 90, 39, 0.05) !important;
+}
+
+.telegram-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 35px !important;
+    padding-bottom: 20px !important;
+    border-bottom: 2px solid var(--pos-secondary) !important;
+}
+
+.telegram-icon {
+    font-size: 2.5rem !important;
+    background: var(--pos-secondary) !important;
+    width: 75px !important;
+    height: 75px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    color: var(--pos-primary) !important;
+}

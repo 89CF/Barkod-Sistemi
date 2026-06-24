@@ -1,0 +1,26 @@
+/* 6. Inputs & Forms */
+.pos-form-group {
+    margin-bottom: 25px !important;
+}
+
+.pos-label {
+    display: block !important;
+    margin-bottom: 12px !important;
+    font-weight: 600 !important;
+    color: var(--pos-primary-dark) !important;
+    font-size: 1rem !important;
+    font-family: var(--font-display) !important;
+}
+
+.pos-input {
+    width: 100% !important;
+    padding: 18px 26px !important;
+    border: 2px solid var(--pos-secondary) !important;
+    border-radius: var(--pos-radius-md) !important;
+    font-family: var(--font-main) !important;
+    font-size: 1.1rem !important;
+    background: var(--pos-bg-input) !important;
+    transition: all 0.3s ease !important;
+    color: var(--pos-text-main) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}

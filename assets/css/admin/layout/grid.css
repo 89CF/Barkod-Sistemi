@@ -1,0 +1,31 @@
+.pos-grid {
+    display: grid !important;
+    grid-template-columns: repeat(12, 1fr) !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.pos-col-12 {
+    grid-column: span 12 !important;
+}
+
+.pos-col-8 {
+    grid-column: span 8 !important;
+}
+
+.pos-col-6 {
+    grid-column: span 6 !important;
+}
+
+.pos-col-4 {
+    grid-column: span 4 !important;
+}
+
+.pos-col-3 {
+    grid-column: span 3 !important;
+}
+
+.pos-col-2 {
+    grid-column: span 2 !important;
+}

@@ -1,0 +1,38 @@
+/* 5. Cards */
+.pos-card {
+    background: var(--pos-bg-card) !important;
+    border-radius: var(--pos-radius-lg) !important;
+    padding: 40px !important;
+    box-shadow: var(--pos-shadow-md) !important;
+    border: 1px solid rgba(45, 90, 39, 0.05) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    margin-bottom: 30px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.pos-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: var(--pos-shadow-lg) !important;
+}
+
+.pos-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 10px !important;
+    background: linear-gradient(90deg, var(--pos-primary-light), var(--pos-primary)) !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* 9. Results & Lists */
+.pos-result-card {
+    background: white !important;
+    border-radius: var(--pos-radius-md) !important;
+    padding: 25px !important;
+    border: 2px solid var(--pos-secondary) !important;
+    margin-top: 25px !important;
+    animation: slideUp 0.5s ease-out !important;
+}

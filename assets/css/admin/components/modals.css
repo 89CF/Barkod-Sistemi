@@ -1,0 +1,14 @@
+/* 11. Modals */
+.puan-bagis-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(45, 90, 39, 0.25) !important;
+    backdrop-filter: blur(15px) !important;
+    z-index: 99999 !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

@@ -1,0 +1,66 @@
+/* 3. Nuclear Reset & Scope Isolation */
+.pos-wrap,
+.pos-wrap *,
+.puan-bagis-modal,
+.puan-bagis-modal * {
+    box-sizing: border-box !important;
+    outline: none !important;
+}
+
+.pos-wrap {
+    font-family: var(--font-main) !important;
+    color: var(--pos-text-main) !important;
+    line-height: 1.6 !important;
+    max-width: 1200px !important;
+    margin: 20px auto !important;
+    background: transparent !important;
+    display: block !important;
+    clear: both !important;
+    position: relative !important;
+}
+
+/* Reset WP Admin Overrides */
+.pos-wrap input[type=text],
+.pos-wrap input[type=number],
+.pos-wrap input[type=date],
+.pos-wrap input[type=time],
+.pos-wrap input[type=password],
+.pos-wrap select,
+.pos-wrap textarea {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    background: var(--pos-bg-input) !important;
+    border: 2px solid var(--pos-secondary) !important;
+    padding: 12px 20px !important;
+    border-radius: var(--pos-radius-sm) !important;
+    height: auto !important;
+    font-family: var(--font-main) !important;
+}
+
+.pos-wrap input:focus,
+.pos-wrap select:focus {
+    border-color: var(--pos-primary) !important;
+    background: #fff !important;
+}
+
+/* Reset WP Admin Headers within our scope */
+.pos-wrap h1,
+.pos-wrap h2,
+.pos-wrap h3,
+.pos-wrap h4,
+.pos-wrap h5,
+.pos-wrap h6 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    color: #263238 !important;
+    line-height: 1.2 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: #263238 !important;
+}

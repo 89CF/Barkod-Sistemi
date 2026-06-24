@@ -1,0 +1,36 @@
+/* 4. Layout Components */
+.pos-header {
+    text-align: center !important;
+    margin-bottom: 50px !important;
+    position: relative !important;
+    padding: 40px 0 !important;
+}
+
+.pos-header::before {
+    content: '🐾' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-size: 3rem !important;
+    opacity: 0.05 !important;
+    z-index: -1 !important;
+}
+
+.pos-title {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    color: #263238 !important;
+    margin-bottom: 15px !important;
+    display: inline-block !important;
+    font-family: var(--font-display) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: #263238 !important;
+}
+
+.pos-subtitle {
+    color: var(--pos-text-muted) !important;
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+}

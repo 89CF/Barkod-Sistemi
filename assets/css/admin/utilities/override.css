@@ -1,0 +1,52 @@
+/* 
+ * Override CSS - Basit ve Etkili Çözüm
+ * Bu dosya diğer pluginlerin CSS çakışmalarını çözmek için kullanılır
+ */
+
+/* Başlık Override - Maksimum Güç */
+body.wp-admin .pos-wrap h1,
+body.wp-admin .pos-wrap h2,
+body.wp-admin .pos-wrap h3,
+body.wp-admin .pos-wrap .pos-title,
+body.wp-admin .pos-wrap h1.pos-title,
+body.wp-admin .pos-wrap .pos-header h1,
+body.wp-admin .pos-wrap .pos-header .pos-title {
+    color: #263238 !important;
+    font-family: 'Fredoka', sans-serif !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    background: transparent !important;
+    text-shadow: none !important;
+}
+
+/* Ana Başlık - Ekstra Güçlü */
+body.wp-admin .pos-wrap h1.pos-title,
+body.wp-admin .pos-wrap .pos-header h1.pos-title {
+    font-size: 3rem !important;
+    color: #263238 !important;
+    margin-bottom: 15px !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Tablo Başlıkları */
+body.wp-admin .pos-wrap .pos-table th {
+    color: #263238 !important;
+    font-family: 'Fredoka', sans-serif !important;
+}
+
+/* Buton Override */
+body.wp-admin .pos-wrap .pos-btn,
+body.wp-admin .pos-wrap button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Mod Butonları */
+body.wp-admin .pos-wrap .mod-button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}

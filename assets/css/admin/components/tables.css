@@ -1,0 +1,48 @@
+/* 10. Cart & Table - Extra Specificity */
+.wrap .pos-table,
+.pos-wrap .pos-table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 15px !important;
+    margin-top: 25px !important;
+}
+
+.wrap .pos-table th,
+.pos-wrap .pos-table th {
+    text-align: left !important;
+    padding: 20px 25px !important;
+    color: var(--pos-text-main) !important;
+    font-weight: 700 !important;
+    font-family: var(--font-display) !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.1em !important;
+    background: transparent !important;
+}
+
+.wrap .pos-table td,
+.pos-wrap .pos-table td {
+    padding: 25px !important;
+    background: white !important;
+    border: none !important;
+    vertical-align: middle !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+.wrap .pos-table tr td:first-child,
+.pos-wrap .pos-table tr td:first-child {
+    border-radius: var(--pos-radius-md) 0 0 var(--pos-radius-md) !important;
+}
+
+.wrap .pos-table tr td:last-child,
+.pos-wrap .pos-table tr td:last-child {
+    border-radius: 0 var(--pos-radius-md) var(--pos-radius-md) 0 !important;
+}
+
+.wrap .pos-table tr:hover td,
+.pos-wrap .pos-table tr:hover td {
+    background: var(--pos-secondary) !important;
+    transform: scale(1.01) !important;
+}

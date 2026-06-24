@@ -1,0 +1,57 @@
+/**
+ * POS Sistemi - Ana CSS Dosyası (Premium Redesign)
+ * Theme: Green & White, Modern, Pet-Friendly
+ * Strict Isolation: Nuclear Reset applied to avoid WP Admin conflicts.
+ * 
+ * Modularized Structure:
+ * - base/: Variables, Reset
+ * - layout/: Header, Grid
+ * - components/: Cards, Forms, Buttons, etc.
+ * - utilities/: Animations, Helpers
+ */
+
+/* Base */
+@import url('admin/base/variables.css');
+@import url('admin/base/reset.css');
+
+/* Layout */
+@import url('admin/layout/header.css');
+@import url('admin/layout/grid.css');
+
+/* Components */
+@import url('admin/components/cards.css');
+/**
+ * POS Sistemi - Ana CSS Dosyası (Premium Redesign)
+ * Theme: Green & White, Modern, Pet-Friendly
+ * Strict Isolation: Nuclear Reset applied to avoid WP Admin conflicts.
+ * 
+ * Modularized Structure:
+ * - base/: Variables, Reset
+ * - layout/: Header, Grid
+ * - components/: Cards, Forms, Buttons, etc.
+ * - utilities/: Animations, Helpers
+ */
+
+/* Base */
+@import url('admin/base/variables.css');
+@import url('admin/base/reset.css');
+
+/* Layout */
+@import url('admin/layout/header.css');
+@import url('admin/layout/grid.css');
+
+/* Components */
+@import url('admin/components/cards.css');
+@import url('admin/components/forms.css');
+@import url('admin/components/buttons.css');
+@import url('admin/components/mode-selector.css');
+@import url('admin/components/tables.css');
+@import url('admin/components/modals.css');
+@import url('admin/components/telegram.css');
+@import url('admin/components/products.css');
+@import url('admin/components/empty-state.css');
+/* Placeholder for missing styles */
+
+/* Utilities */
+@import url('admin/utilities/animations.css');
+@import url('admin/utilities/helpers.css');
