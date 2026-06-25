@@ -1055,7 +1055,9 @@ class Barkod_Sistemi_Admin {
                 $this->log_security_event('UNAUTHORIZED_ACCESS', 'satisi_tamamla');
                 wp_send_json_error('Yetkisiz işlem');
             }
-            check_ajax_referer('barkod_sistemi_nonce', 'nonce');
+            if (!check_ajax_referer('barkod_sistemi_nonce', 'nonce', false)) {
+                wp_send_json_error('Güvenlik doğrulaması başarısız. Sayfayı yenileyip tekrar deneyin.');
+            }
             $this->check_rate_limit('complete_sale');
 
             $musteri_id = intval($_POST['musteri_id'] ?? 0);
@@ -1166,15 +1168,24 @@ class Barkod_Sistemi_Admin {
 
             $this->send_sale_notification($order, $musteri_id, $kullanilan_puan, $puan_ekle, $satis_modu);
 
+            // WooCommerce hook'ları (İletiMerkezi SMS vb.) output buffer'a yazabilir.
+            // JSON yanıtından önce temizle.
+            if (ob_get_level() > 0) {
+                ob_clean();
+            }
+
             wp_send_json_success([
                 'message'    => 'Satış tamamlandı',
                 'siparis_id' => $order->get_id()
             ]);
 
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             error_log('[BARKOD_SATIS_ERROR] ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
             if (isset($wpdb)) {
                 $wpdb->query('ROLLBACK');
+            }
+            if (ob_get_level() > 0) {
+                ob_clean();
             }
             wp_send_json_error('Satış tamamlanamadı. Lütfen tekrar deneyin.');
         }
