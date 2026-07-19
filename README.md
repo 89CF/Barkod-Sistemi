@@ -51,7 +51,3 @@ Issues and pull requests are welcome. Please keep the existing code style (stric
 ## License
 
 Released under the [MIT License](LICENSE).
-
----
-
-Suggested GitHub topics: `wordpress`, `wordpress-plugin`, `woocommerce`, `barcode`, `sms`, `loyalty-program`, `turkish`, `retail`
