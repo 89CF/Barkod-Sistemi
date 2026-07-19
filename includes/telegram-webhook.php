@@ -1,7 +1,8 @@
 <?php
+declare(strict_types=1);
 /**
  * Telegram Webhook Handler
- * 
+ *
  * URL: https://yoursite.com/wp-content/plugins/barkod-sistemi/includes/telegram-webhook.php
  * Set webhook: https://api.telegram.org/bot[TOKEN]/setWebhook?url=[WEBHOOK_URL]
  */
@@ -17,7 +18,6 @@ if (basename($_SERVER['SCRIPT_FILENAME'] ?? '') === 'telegram-webhook.php') {
 // Load WordPress
 require_once('../../../../wp-load.php');
 
-declare(strict_types=1);
 if (!defined('ABSPATH')) exit;
 
 // Verify Telegram secret token (önce kontrol et, içeriği sonra oku)
