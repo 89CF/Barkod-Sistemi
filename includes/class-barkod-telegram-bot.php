@@ -23,28 +23,28 @@ class Barkod_Telegram_Bot {
     public function send_sale_notification(array $data): void {
         if (!$this->is_configured()) return;
         
-        $message = "📦 <b>Yeni Satış!</b>\n\n";
-        $message .= "🔢 Sipariş: #" . (int)$data['order_id'] . "\n";
-        $message .= "💰 Tutar: " . number_format((float)$data['total'], 2) . " TL\n";
-        
+        $message = __("📦 <b>Yeni Satış!</b>\n\n", 'barkod-sistemi');
+        $message .= __("🔢 Sipariş: #", 'barkod-sistemi') . (int)$data['order_id'] . "\n";
+        $message .= __("💰 Tutar: ", 'barkod-sistemi') . number_format((float)$data['total'], 2) . " TL\n";
+
         if (!empty($data['customer'])) {
-            $message .= "👤 Müşteri: " . esc_html($data['customer']) . "\n";
+            $message .= __("👤 Müşteri: ", 'barkod-sistemi') . esc_html($data['customer']) . "\n";
         }
-        
+
         if ($data['points_used'] > 0) {
-            $message .= "⭐ Kullanılan Puan: " . (int)$data['points_used'] . "\n";
+            $message .= __("⭐ Kullanılan Puan: ", 'barkod-sistemi') . (int)$data['points_used'] . "\n";
         }
-        
+
         if ($data['points_earned'] > 0) {
-            $message .= "🎁 Kazanılan Puan: " . (int)$data['points_earned'] . "\n";
+            $message .= __("🎁 Kazanılan Puan: ", 'barkod-sistemi') . (int)$data['points_earned'] . "\n";
         }
-        
+
         // Requirement 1.1, 2.1: Satış modunu bildir
         if (!empty($data['sale_mode'])) {
             $mode_icon = ($data['sale_mode'] === 'Hızlı Satış Modu') ? '⚡' : '🔧';
-            $message .= "{$mode_icon} Mod: " . esc_html($data['sale_mode']) . "\n";
+            $message .= "{$mode_icon} " . __("Mod: ", 'barkod-sistemi') . esc_html($data['sale_mode']) . "\n";
         }
-        
+
         $message .= "\n⏰ " . esc_html(current_time('d.m.Y H:i'));
         
         $this->send_message($message);
@@ -61,10 +61,10 @@ class Barkod_Telegram_Bot {
         $threshold = (int) get_option('barkod_telegram_stock_threshold', self::STOCK_THRESHOLD);
         
         if ($stock <= $threshold) {
-            $message = "⚠️ <b>Düşük Stok Uyarısı!</b>\n\n";
-            $message .= "📦 Ürün: " . esc_html($product->get_name()) . "\n";
-            $message .= "📊 Kalan: " . (int)$stock . " adet\n";
-            $message .= "🔢 Barkod: " . esc_html($product->get_sku()) . "\n";
+            $message = __("⚠️ <b>Düşük Stok Uyarısı!</b>\n\n", 'barkod-sistemi');
+            $message .= __("📦 Ürün: ", 'barkod-sistemi') . esc_html($product->get_name()) . "\n";
+            $message .= __("📊 Kalan: ", 'barkod-sistemi') . (int)$stock . " " . __("adet", 'barkod-sistemi') . "\n";
+            $message .= __("🔢 Barkod: ", 'barkod-sistemi') . esc_html($product->get_sku()) . "\n";
             $message .= "\n⏰ " . esc_html(current_time('d.m.Y H:i'));
             
             $this->send_message($message);
@@ -114,14 +114,14 @@ class Barkod_Telegram_Bot {
             }
         }
         
-        $message = "📊 <b>Günlük Satış Raporu</b>\n";
-        $message .= "📅 Tarih: " . current_time('d.m.Y') . "\n";
+        $message = __("📊 <b>Günlük Satış Raporu</b>\n", 'barkod-sistemi');
+        $message .= __("📅 Tarih: ", 'barkod-sistemi') . current_time('d.m.Y') . "\n";
         $message .= "━━━━━━━━━━━━━━━━\n\n";
-        $message .= "💰 Toplam Satış: " . number_format((float)$total_sales, 2) . " TL\n";
-        $message .= "🛒 Sipariş Sayısı: " . count($orders) . "\n";
-        $message .= "👥 Müşteri Sayısı: " . count($customers) . "\n";
-        $message .= "⭐ Kullanılan Puan: " . number_format((int)$total_points_used) . "\n";
-        $message .= "🎁 Kazanılan Puan: " . number_format((int)$total_points_earned) . "\n";
+        $message .= __("💰 Toplam Satış: ", 'barkod-sistemi') . number_format((float)$total_sales, 2) . " TL\n";
+        $message .= __("🛒 Sipariş Sayısı: ", 'barkod-sistemi') . count($orders) . "\n";
+        $message .= __("👥 Müşteri Sayısı: ", 'barkod-sistemi') . count($customers) . "\n";
+        $message .= __("⭐ Kullanılan Puan: ", 'barkod-sistemi') . number_format((int)$total_points_used) . "\n";
+        $message .= __("🎁 Kazanılan Puan: ", 'barkod-sistemi') . number_format((int)$total_points_earned) . "\n";
         
         $this->send_message($message);
         $this->log_bot_action('DAILY_REPORT', "Sales: {$total_sales} TL");
@@ -131,10 +131,10 @@ class Barkod_Telegram_Bot {
     public function send_security_alert(string $event, string $details): void {
         if (!$this->is_configured()) return;
         
-        $message = "🚨 <b>Güvenlik Uyarısı!</b>\n\n";
-        $message .= "⚠️ Olay: {$event}\n";
-        $message .= "📝 Detay: {$details}\n";
-        $message .= "⏰ Zaman: " . current_time('d.m.Y H:i:s');
+        $message = __("🚨 <b>Güvenlik Uyarısı!</b>\n\n", 'barkod-sistemi');
+        $message .= sprintf(__("⚠️ Olay: %s\n", 'barkod-sistemi'), $event);
+        $message .= sprintf(__("📝 Detay: %s\n", 'barkod-sistemi'), $details);
+        $message .= __("⏰ Zaman: ", 'barkod-sistemi') . current_time('d.m.Y H:i:s');
         
         $this->send_message($message);
         $this->log_bot_action('SECURITY_ALERT', $event);
@@ -143,7 +143,7 @@ class Barkod_Telegram_Bot {
     // 5. Handle Bot Commands
     public function handle_command(string $command, array $args): string {
         if (!$this->is_configured()) {
-            return "❌ Bot yapılandırılmamış.";
+            return __("❌ Bot yapılandırılmamış.", 'barkod-sistemi');
         }
         
         switch ($command) {
@@ -173,14 +173,14 @@ class Barkod_Telegram_Bot {
                 return $this->get_help_message();
             
             default:
-                return "❌ Bilinmeyen komut. /help yazarak komutları görebilirsiniz.";
+                return __("❌ Bilinmeyen komut. /help yazarak komutları görebilirsiniz.", 'barkod-sistemi');
         }
     }
     
     // Customer Query
     private function handle_customer_query(array $args): string {
         if (empty($args[0])) {
-            return "❌ Kullanım: /musteri [telefon]";
+            return __("❌ Kullanım: /musteri [telefon]", 'barkod-sistemi');
         }
         
         $phone = sanitize_text_field($args[0]);
@@ -197,17 +197,17 @@ class Barkod_Telegram_Bot {
         ]);
         
         if (empty($users)) {
-            return "❌ Müşteri bulunamadı.";
+            return __("❌ Müşteri bulunamadı.", 'barkod-sistemi');
         }
-        
+
         $user = $users[0];
         $points = (int) get_user_meta($user->ID, 'wps_wpr_points', true);
-        
-        $message = "👤 <b>Müşteri Bilgisi</b>\n\n";
-        $message .= "📛 Ad: " . esc_html($user->display_name) . "\n";
-        $message .= "📧 E-posta: " . esc_html($user->user_email) . "\n";
-        $message .= "📱 Telefon: " . esc_html($phone) . "\n";
-        $message .= "⭐ Puan: " . number_format((int)$points);
+
+        $message = __("👤 <b>Müşteri Bilgisi</b>\n\n", 'barkod-sistemi');
+        $message .= __("📛 Ad: ", 'barkod-sistemi') . esc_html($user->display_name) . "\n";
+        $message .= __("📧 E-posta: ", 'barkod-sistemi') . esc_html($user->user_email) . "\n";
+        $message .= __("📱 Telefon: ", 'barkod-sistemi') . esc_html($phone) . "\n";
+        $message .= __("⭐ Puan: ", 'barkod-sistemi') . number_format((int)$points);
         
         return $message;
     }
@@ -215,7 +215,7 @@ class Barkod_Telegram_Bot {
     // Stock Query
     private function handle_stock_query(array $args): string {
         if (empty($args[0])) {
-            return "❌ Kullanım: /stok [barkod]";
+            return __("❌ Kullanım: /stok [barkod]", 'barkod-sistemi');
         }
         
         $barcode = sanitize_text_field($args[0]);
@@ -235,27 +235,27 @@ class Barkod_Telegram_Bot {
         $query = new WP_Query($args_query);
         
         if (!$query->have_posts()) {
-            return "❌ Ürün bulunamadı.";
+            return __("❌ Ürün bulunamadı.", 'barkod-sistemi');
         }
-        
+
         $query->the_post();
         $product = wc_get_product(get_the_ID());
         wp_reset_postdata();
-        
-        $message = "📦 <b>Stok Bilgisi</b>\n\n";
-        $message .= "📛 Ürün: " . esc_html($product->get_name()) . "\n";
-        $message .= "🔢 Barkod: " . esc_html($barcode) . "\n";
-        $message .= "💰 Fiyat: " . number_format((float)$product->get_price(), 2) . " TL\n";
-        
+
+        $message = __("📦 <b>Stok Bilgisi</b>\n\n", 'barkod-sistemi');
+        $message .= __("📛 Ürün: ", 'barkod-sistemi') . esc_html($product->get_name()) . "\n";
+        $message .= __("🔢 Barkod: ", 'barkod-sistemi') . esc_html($barcode) . "\n";
+        $message .= __("💰 Fiyat: ", 'barkod-sistemi') . number_format((float)$product->get_price(), 2) . " TL\n";
+
         if ($product->managing_stock()) {
             $stock = $product->get_stock_quantity();
-            $message .= "📊 Stok: {$stock} adet\n";
-            
+            $message .= sprintf(__("📊 Stok: %d adet\n", 'barkod-sistemi'), $stock);
+
             if ($stock <= self::STOCK_THRESHOLD) {
-                $message .= "⚠️ Düşük stok!";
+                $message .= __("⚠️ Düşük stok!", 'barkod-sistemi');
             }
         } else {
-            $message .= "📊 Stok: Takip edilmiyor";
+            $message .= __("📊 Stok: Takip edilmiyor", 'barkod-sistemi');
         }
         
         return $message;
@@ -276,99 +276,111 @@ class Barkod_Telegram_Bot {
             $total += $order->get_total();
         }
         
-        $message = "💰 <b>Bugünkü Satışlar</b>\n\n";
-        $message .= "📅 Tarih: " . current_time('d.m.Y') . "\n";
-        $message .= "🛒 Sipariş: " . count($orders) . "\n";
-        $message .= "💵 Toplam: " . number_format((float)$total, 2) . " TL";
-        
+        $message = __("💰 <b>Bugünkü Satışlar</b>\n\n", 'barkod-sistemi');
+        $message .= __("📅 Tarih: ", 'barkod-sistemi') . current_time('d.m.Y') . "\n";
+        $message .= __("🛒 Sipariş: ", 'barkod-sistemi') . count($orders) . "\n";
+        $message .= __("💵 Toplam: ", 'barkod-sistemi') . number_format((float)$total, 2) . " TL";
+
         return $message;
     }
-    
+
     // Report Query
     private function handle_report_query(): string {
         $this->send_daily_report();
-        return "✅ Detaylı rapor gönderildi.";
+        return __("✅ Detaylı rapor gönderildi.", 'barkod-sistemi');
     }
-    
+
     // 6. Remote Management Commands
     private function handle_discount_command(array $args): string {
         if (count($args) < 2) {
-            return "❌ Kullanım: /indirim [barkod] [yüzde]";
+            return __("❌ Kullanım: /indirim [barkod] [yüzde]", 'barkod-sistemi');
         }
-        
+
         $barcode = sanitize_text_field($args[0]);
         $percent = (float) $args[1];
-        
+
         if ($percent < 0 || $percent > 100) {
-            return "❌ İndirim yüzdesi 0-100 arasında olmalı.";
+            return __("❌ İndirim yüzdesi 0-100 arasında olmalı.", 'barkod-sistemi');
         }
-        
+
         // Find product
         $product_id = wc_get_product_id_by_sku($barcode);
-        
+
         if (!$product_id) {
-            return "❌ Ürün bulunamadı.";
+            return __("❌ Ürün bulunamadı.", 'barkod-sistemi');
         }
-        
+
         $product = wc_get_product($product_id);
         $regular_price = $product->get_regular_price();
         $sale_price = $regular_price * (1 - $percent / 100);
-        
+
         $product->set_sale_price($sale_price);
         $product->save();
-        
+
         $this->log_bot_action('DISCOUNT_APPLIED', "Product: {$barcode}, Discount: {$percent}%");
-        
-        return "✅ İndirim uygulandı!\n\n📦 Ürün: {$product->get_name()}\n💰 Eski Fiyat: " . number_format((float)$regular_price, 2) . " TL\n🏷️ Yeni Fiyat: " . number_format((float)$sale_price, 2) . " TL\n📉 İndirim: %{$percent}";
+
+        return sprintf(
+            __("✅ İndirim uygulandı!\n\n📦 Ürün: %1\$s\n💰 Eski Fiyat: %2\$s TL\n🏷️ Yeni Fiyat: %3\$s TL\n📉 İndirim: %%%4\$s", 'barkod-sistemi'),
+            $product->get_name(),
+            number_format((float)$regular_price, 2),
+            number_format((float)$sale_price, 2),
+            $percent
+        );
     }
-    
+
     private function handle_add_stock_command(array $args): string {
         if (count($args) < 2) {
-            return "❌ Kullanım: /stokekle [barkod] [adet]";
+            return __("❌ Kullanım: /stokekle [barkod] [adet]", 'barkod-sistemi');
         }
-        
+
         $barcode = sanitize_text_field($args[0]);
         $quantity = (int) $args[1];
-        
+
         if ($quantity <= 0) {
-            return "❌ Adet pozitif olmalı.";
+            return __("❌ Adet pozitif olmalı.", 'barkod-sistemi');
         }
-        
+
         $product_id = wc_get_product_id_by_sku($barcode);
-        
+
         if (!$product_id) {
-            return "❌ Ürün bulunamadı.";
+            return __("❌ Ürün bulunamadı.", 'barkod-sistemi');
         }
-        
+
         $product = wc_get_product($product_id);
-        
+
         if (!$product->managing_stock()) {
-            return "❌ Bu ürün için stok takibi yapılmıyor.";
+            return __("❌ Bu ürün için stok takibi yapılmıyor.", 'barkod-sistemi');
         }
-        
+
         $old_stock = $product->get_stock_quantity();
         $new_stock = $old_stock + $quantity;
-        
+
         $product->set_stock_quantity($new_stock);
         $product->save();
-        
+
         $this->log_bot_action('STOCK_ADDED', "Product: {$barcode}, Added: {$quantity}");
-        
-        return "✅ Stok eklendi!\n\n📦 Ürün: {$product->get_name()}\n📊 Eski Stok: {$old_stock}\n➕ Eklenen: {$quantity}\n📈 Yeni Stok: {$new_stock}";
+
+        return sprintf(
+            __("✅ Stok eklendi!\n\n📦 Ürün: %1\$s\n📊 Eski Stok: %2\$s\n➕ Eklenen: %3\$s\n📈 Yeni Stok: %4\$s", 'barkod-sistemi'),
+            $product->get_name(),
+            $old_stock,
+            $quantity,
+            $new_stock
+        );
     }
-    
+
     private function handle_give_points_command(array $args): string {
         if (count($args) < 2) {
-            return "❌ Kullanım: /puanver [telefon] [puan]";
+            return __("❌ Kullanım: /puanver [telefon] [puan]", 'barkod-sistemi');
         }
-        
+
         $phone = sanitize_text_field($args[0]);
         $points = (int) $args[1];
-        
+
         if ($points <= 0) {
-            return "❌ Puan pozitif olmalı.";
+            return __("❌ Puan pozitif olmalı.", 'barkod-sistemi');
         }
-        
+
         $users = get_users([
             'meta_query' => [
                 [
@@ -379,36 +391,42 @@ class Barkod_Telegram_Bot {
             ],
             'number' => 1
         ]);
-        
+
         if (empty($users)) {
-            return "❌ Müşteri bulunamadı.";
+            return __("❌ Müşteri bulunamadı.", 'barkod-sistemi');
         }
-        
+
         $user = $users[0];
         $old_points = (int) get_user_meta($user->ID, 'wps_wpr_points', true);
         $new_points = $old_points + $points;
-        
+
         update_user_meta($user->ID, 'wps_wpr_points', $new_points);
-        
+
         $this->log_bot_action('POINTS_GIVEN', "User: {$user->ID}, Points: {$points}");
-        
-        return "✅ Puan verildi!\n\n👤 Müşteri: {$user->display_name}\n⭐ Eski Puan: " . number_format((int)$old_points) . "\n➕ Verilen: " . number_format((int)$points) . "\n🎁 Yeni Puan: " . number_format((int)$new_points);
+
+        return sprintf(
+            __("✅ Puan verildi!\n\n👤 Müşteri: %1\$s\n⭐ Eski Puan: %2\$s\n➕ Verilen: %3\$s\n🎁 Yeni Puan: %4\$s", 'barkod-sistemi'),
+            $user->display_name,
+            number_format((int)$old_points),
+            number_format((int)$points),
+            number_format((int)$new_points)
+        );
     }
-    
+
     // Help Message
     private function get_help_message(): string {
-        $message = "🤖 <b>POS Bot Komutları</b>\n\n";
-        $message .= "<b>📊 Sorgular:</b>\n";
-        $message .= "/musteri [telefon] - Müşteri bilgisi\n";
-        $message .= "/stok [barkod] - Stok kontrolü\n";
-        $message .= "/satis - Bugünkü satışlar\n";
-        $message .= "/rapor - Detaylı rapor\n\n";
-        $message .= "<b>⚙️ Yönetim:</b>\n";
-        $message .= "/indirim [barkod] [%] - İndirim uygula\n";
-        $message .= "/stokekle [barkod] [adet] - Stok ekle\n";
-        $message .= "/puanver [telefon] [puan] - Puan ver\n\n";
-        $message .= "/help - Bu mesajı göster";
-        
+        $message = __("🤖 <b>POS Bot Komutları</b>\n\n", 'barkod-sistemi');
+        $message .= __("<b>📊 Sorgular:</b>\n", 'barkod-sistemi');
+        $message .= __("/musteri [telefon] - Müşteri bilgisi\n", 'barkod-sistemi');
+        $message .= __("/stok [barkod] - Stok kontrolü\n", 'barkod-sistemi');
+        $message .= __("/satis - Bugünkü satışlar\n", 'barkod-sistemi');
+        $message .= __("/rapor - Detaylı rapor\n\n", 'barkod-sistemi');
+        $message .= __("<b>⚙️ Yönetim:</b>\n", 'barkod-sistemi');
+        $message .= __("/indirim [barkod] [%] - İndirim uygula\n", 'barkod-sistemi');
+        $message .= __("/stokekle [barkod] [adet] - Stok ekle\n", 'barkod-sistemi');
+        $message .= __("/puanver [telefon] [puan] - Puan ver\n\n", 'barkod-sistemi');
+        $message .= __("/help - Bu mesajı göster", 'barkod-sistemi');
+
         return $message;
     }
     

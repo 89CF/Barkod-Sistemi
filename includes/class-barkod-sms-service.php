@@ -68,13 +68,13 @@ class Barkod_SMS_Service {
         if (!$this->is_enabled()) {
             $this->log_sms(
                 $data['donor_phone'] ?? '',
-                'SMS servisi devre dışı',
+                __('SMS servisi devre dışı', 'barkod-sistemi'),
                 false,
                 'service_disabled'
             );
             return false;
         }
-        
+
         $message = $this->get_donor_sms_template($data);
         $phone = $this->normalize_phone($data['donor_phone'] ?? '');
 
@@ -96,7 +96,7 @@ class Barkod_SMS_Service {
         if (!$this->is_enabled()) {
             $this->log_sms(
                 $data['owner_phone'] ?? '',
-                'SMS servisi devre dışı',
+                __('SMS servisi devre dışı', 'barkod-sistemi'),
                 false,
                 'service_disabled'
             );
@@ -145,7 +145,7 @@ class Barkod_SMS_Service {
             }
             
             if (!$success) {
-                $error_message = 'SMS gönderimi başarısız';
+                $error_message = __('SMS gönderimi başarısız', 'barkod-sistemi');
             }
             
         } catch (Exception $e) {
@@ -291,7 +291,7 @@ class Barkod_SMS_Service {
     private function get_donor_sms_template(array $data): string {
         $template = get_option(
             'barkod_sms_donor_template',
-            'Merhaba {donor_name}, {kumbara_name} kumbarasına {tl} TL değerindeki puan bağışınız gerçekleşti. Teşekkürler! - {shop_name}'
+            __('Merhaba {donor_name}, {kumbara_name} kumbarasına {tl} TL değerindeki puan bağışınız gerçekleşti. Teşekkürler! - {shop_name}', 'barkod-sistemi')
         );
         
         $shop_name = get_bloginfo('name');
@@ -325,7 +325,7 @@ class Barkod_SMS_Service {
     private function get_owner_sms_template(array $data): string {
         $template = get_option(
             'barkod_sms_owner_template',
-            'Merhaba {owner_name}, {donor_name} tarafından {kumbara_name} kumbaranıza {tl} TL değerinde puan bağışı yapıldı.Kumbaranızda toplam {total_donate} TL değerinde para puan bulunmakta! - {shop_name}'
+            __('Merhaba {owner_name}, {donor_name} tarafından {kumbara_name} kumbaranıza {tl} TL değerinde puan bağışı yapıldı.Kumbaranızda toplam {total_donate} TL değerinde para puan bulunmakta! - {shop_name}', 'barkod-sistemi')
         );
         
         $shop_name = get_bloginfo('name');

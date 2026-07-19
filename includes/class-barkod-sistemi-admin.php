@@ -395,7 +395,7 @@ class Barkod_Sistemi_Admin {
         
         if ($attempts && $attempts >= self::RATE_LIMIT_MAX_ATTEMPTS) {
             $this->log_security_event('RATE_LIMIT_EXCEEDED', "Action: {$action}");
-            wp_send_json_error('Çok fazla deneme yaptınız. Lütfen 1 dakika bekleyin.');
+            wp_send_json_error(__('Çok fazla deneme yaptınız. Lütfen 1 dakika bekleyin.', 'barkod-sistemi'));
         }
         
         set_transient($transient_key, ($attempts ? $attempts + 1 : 1), self::RATE_LIMIT_WINDOW);
@@ -551,7 +551,7 @@ class Barkod_Sistemi_Admin {
     
     public function pos_kullanici_olustur(): void {
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
 
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
@@ -562,21 +562,21 @@ class Barkod_Sistemi_Admin {
         $phone    = sanitize_text_field($_POST['phone'] ?? '');
 
         if (!$this->validate_username($username)) {
-            wp_send_json_error('Geçersiz kullanıcı adı (3-60 karakter, sadece harf, rakam, boşluk ve alt çizgi)');
+            wp_send_json_error(__('Geçersiz kullanıcı adı (3-60 karakter, sadece harf, rakam, boşluk ve alt çizgi)', 'barkod-sistemi'));
         }
 
         if (!empty($email) && !$this->validate_email($email)) {
-            wp_send_json_error('Geçersiz e-posta adresi');
+            wp_send_json_error(__('Geçersiz e-posta adresi', 'barkod-sistemi'));
         }
 
         if (!$this->validate_phone($phone)) {
-            wp_send_json_error('Geçersiz telefon numarası (10 rakam gerekli)');
+            wp_send_json_error(__('Geçersiz telefon numarası (10 rakam gerekli)', 'barkod-sistemi'));
         }
 
         $normalized_phone = $this->normalize_phone($phone);
 
         if (!empty($email) && email_exists($email)) {
-            wp_send_json_error('Bu e-posta adresi zaten kayıtlı');
+            wp_send_json_error(__('Bu e-posta adresi zaten kayıtlı', 'barkod-sistemi'));
         }
 
         $existing_users = get_users([
@@ -587,11 +587,11 @@ class Barkod_Sistemi_Admin {
         ]);
 
         if (!empty($existing_users)) {
-            wp_send_json_error('Bu telefon numarası zaten kayıtlı');
+            wp_send_json_error(__('Bu telefon numarası zaten kayıtlı', 'barkod-sistemi'));
         }
 
         if (username_exists($username)) {
-            wp_send_json_error('Bu kullanıcı adı zaten kullanılıyor');
+            wp_send_json_error(__('Bu kullanıcı adı zaten kullanılıyor', 'barkod-sistemi'));
         }
 
         $user_id = wp_insert_user([
@@ -603,20 +603,20 @@ class Barkod_Sistemi_Admin {
 
         if (is_wp_error($user_id)) {
             error_log('[BARKOD_USER_CREATE_ERROR] ' . $user_id->get_error_message());
-            wp_send_json_error('Kullanıcı oluşturulamadı: ' . $user_id->get_error_message());
+            wp_send_json_error(sprintf(__('Kullanıcı oluşturulamadı: %s', 'barkod-sistemi'), $user_id->get_error_message()));
         }
 
         update_user_meta($user_id, 'billing_phone', $normalized_phone);
         update_user_meta($user_id, 'wps_wpr_points', 0);
 
-        wp_send_json_success('Kullanıcı başarıyla oluşturuldu');
+        wp_send_json_success(__('Kullanıcı başarıyla oluşturuldu', 'barkod-sistemi'));
     }
 
 
     public function musteri_tel_ara_callback(): void {
         if (!current_user_can('manage_woocommerce')) {
             $this->log_security_event('UNAUTHORIZED_ACCESS', 'musteri_tel_ara');
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
         $this->check_rate_limit('search_customer');
@@ -624,7 +624,7 @@ class Barkod_Sistemi_Admin {
         $telefon = sanitize_text_field($_POST['telefon'] ?? '');
 
         if (empty($telefon) || !$this->validate_phone($telefon)) {
-            wp_send_json_error('Geçerli bir telefon numarası girin (10 rakam)');
+            wp_send_json_error(__('Geçerli bir telefon numarası girin (10 rakam)', 'barkod-sistemi'));
         }
         $telefon = $this->normalize_phone($telefon);
 
@@ -678,14 +678,14 @@ class Barkod_Sistemi_Admin {
                 'siparisler'     => $siparisler,
             ]);
         } else {
-            wp_send_json_error('Müşteri bulunamadı');
+            wp_send_json_error(__('Müşteri bulunamadı', 'barkod-sistemi'));
         }
     }
 
     public function urun_barkod_ara_callback(): void {
         if (!current_user_can('manage_woocommerce')) {
             $this->log_security_event('UNAUTHORIZED_ACCESS', 'urun_barkod_ara');
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
         $this->check_rate_limit('search_product');
@@ -693,7 +693,7 @@ class Barkod_Sistemi_Admin {
         $barkod = isset($_POST['barkod']) ? trim(sanitize_text_field($_POST['barkod'])) : '';
         
         if (empty($barkod) || strlen($barkod) < self::BARCODE_MIN_LENGTH || strlen($barkod) > self::BARCODE_MAX_LENGTH) {
-            wp_send_json_error('Geçersiz barkod formatı (8-20 karakter olmalı)');
+            wp_send_json_error(__('Geçersiz barkod formatı (8-20 karakter olmalı)', 'barkod-sistemi'));
         }
 
         $args = [
@@ -716,7 +716,7 @@ class Barkod_Sistemi_Admin {
             
             if (!$product->is_in_stock()) {
                 wp_reset_postdata();
-                wp_send_json_error('Ürün stokta yok');
+                wp_send_json_error(__('Ürün stokta yok', 'barkod-sistemi'));
             }
 
             $expiration_date = $product->get_meta('_expiration_date') ?: '';
@@ -746,7 +746,7 @@ class Barkod_Sistemi_Admin {
             wp_reset_postdata();
             wp_send_json_success($urun_bilgisi);
         } else {
-            wp_send_json_error('Ürün bulunamadı');
+            wp_send_json_error(__('Ürün bulunamadı', 'barkod-sistemi'));
         }
     }
 
@@ -770,7 +770,7 @@ class Barkod_Sistemi_Admin {
             // Yetki kontrolü
             if (!current_user_can('manage_woocommerce')) {
                 $this->log_security_event('UNAUTHORIZED_ACCESS', 'hizli_satis_urun_ekle');
-                throw new Barkod_Authorization_Exception('Yetkisiz işlem');
+                throw new Barkod_Authorization_Exception(__('Yetkisiz işlem', 'barkod-sistemi'));
             }
             
             // Nonce kontrolü
@@ -785,7 +785,7 @@ class Barkod_Sistemi_Admin {
             // Barkod validasyonu
             // Requirement 1.3: Geçersiz barkod kontrolü
             if (!$this->validate_barcode($barkod)) {
-                throw new Barkod_Validation_Exception('Geçersiz barkod formatı (8-20 karakter, sadece rakam)', 'invalid_barcode');
+                throw new Barkod_Validation_Exception(__('Geçersiz barkod formatı (8-20 karakter, sadece rakam)', 'barkod-sistemi'), 'invalid_barcode');
             }
             
             // Ürün arama (SKU ile)
@@ -805,7 +805,7 @@ class Barkod_Sistemi_Admin {
             $query = new WP_Query($args);
             
             if (!$query->have_posts()) {
-                throw new Barkod_Product_Exception('Ürün bulunamadı', 'product_not_found');
+                throw new Barkod_Product_Exception(__('Ürün bulunamadı', 'barkod-sistemi'), 'product_not_found');
             }
             
             $query->the_post();
@@ -815,13 +815,13 @@ class Barkod_Sistemi_Admin {
             // Requirement 1.5: Stokta olmayan ürünleri sepete ekleme
             if (!$product->is_in_stock()) {
                 wp_reset_postdata();
-                throw new Barkod_Product_Exception('Ürün stokta yok', 'out_of_stock');
+                throw new Barkod_Product_Exception(__('Ürün stokta yok', 'barkod-sistemi'), 'out_of_stock');
             }
             
             // Stok miktarı kontrolü (managing_stock aktifse)
             if ($product->managing_stock() && $product->get_stock_quantity() <= 0) {
                 wp_reset_postdata();
-                throw new Barkod_Product_Exception('Ürün stokta yok', 'out_of_stock');
+                throw new Barkod_Product_Exception(__('Ürün stokta yok', 'barkod-sistemi'), 'out_of_stock');
             }
             
             // Ürün bilgilerini hazırla
@@ -884,7 +884,7 @@ class Barkod_Sistemi_Admin {
                 ],
                 Barkod_Logger::CATEGORY_ERROR
             );
-            wp_send_json_error('Beklenmeyen bir hata oluştu');
+            wp_send_json_error(__('Beklenmeyen bir hata oluştu', 'barkod-sistemi'));
         }
     }
 
@@ -906,7 +906,7 @@ class Barkod_Sistemi_Admin {
             // Requirement 6.1: Sadece yetkili kullanıcılar barkod basabilir
             if (!current_user_can('manage_woocommerce')) {
                 $this->log_security_event('UNAUTHORIZED_ACCESS', 'barkod_bas');
-                throw new Barkod_Authorization_Exception('Yetkisiz işlem');
+                throw new Barkod_Authorization_Exception(__('Yetkisiz işlem', 'barkod-sistemi'));
             }
             
             // Nonce kontrolü
@@ -921,17 +921,17 @@ class Barkod_Sistemi_Admin {
             
             // Validasyon
             if ($product_id <= 0) {
-                throw new Barkod_Validation_Exception('Geçersiz ürün ID', 'invalid_product_id');
+                throw new Barkod_Validation_Exception(__('Geçersiz ürün ID', 'barkod-sistemi'), 'invalid_product_id');
             }
             
             if ($quantity <= 0 || $quantity > 1000) {
-                throw new Barkod_Validation_Exception('Barkod adedi 1-1000 arasında olmalıdır', 'invalid_quantity');
+                throw new Barkod_Validation_Exception(__('Barkod adedi 1-1000 arasında olmalıdır', 'barkod-sistemi'), 'invalid_quantity');
             }
             
             // Ürünü kontrol et
             $product = wc_get_product($product_id);
             if (!$product) {
-                throw new Barkod_Product_Exception('Ürün bulunamadı', 'product_not_found');
+                throw new Barkod_Product_Exception(__('Ürün bulunamadı', 'barkod-sistemi'), 'product_not_found');
             }
             
             // Barkod yazdırma işlemi
@@ -992,7 +992,7 @@ class Barkod_Sistemi_Admin {
             // Başarı response
             // Requirement 6.3: Başarı/hata response
             wp_send_json_success([
-                'message' => 'Barkod basma işlemi başarılı',
+                'message' => __('Barkod basma işlemi başarılı', 'barkod-sistemi'),
                 'product_id' => $product_id,
                 'quantity' => $quantity,
                 'new_stock' => $product->get_stock_quantity()
@@ -1031,7 +1031,7 @@ class Barkod_Sistemi_Admin {
                 ],
                 Barkod_Logger::CATEGORY_ERROR
             );
-            wp_send_json_error('Barkod basma işlemi başarısız');
+            wp_send_json_error(__('Barkod basma işlemi başarısız', 'barkod-sistemi'));
         }
     }
     
@@ -1053,10 +1053,10 @@ class Barkod_Sistemi_Admin {
         try {
             if (!current_user_can('manage_woocommerce')) {
                 $this->log_security_event('UNAUTHORIZED_ACCESS', 'satisi_tamamla');
-                wp_send_json_error('Yetkisiz işlem');
+                wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
             }
             if (!check_ajax_referer('barkod_sistemi_nonce', 'nonce', false)) {
-                wp_send_json_error('Güvenlik doğrulaması başarısız. Sayfayı yenileyip tekrar deneyin.');
+                wp_send_json_error(__('Güvenlik doğrulaması başarısız. Sayfayı yenileyip tekrar deneyin.', 'barkod-sistemi'));
             }
             $this->check_rate_limit('complete_sale');
 
@@ -1068,13 +1068,13 @@ class Barkod_Sistemi_Admin {
             $mod_adi = ($satis_modu === 'gelistirici') ? 'Geliştirici Modu' : 'Hızlı Satış Modu';
 
             if (empty($urunler) || !is_array($urunler)) {
-                wp_send_json_error('Sepet boş veya geçersiz');
+                wp_send_json_error(__('Sepet boş veya geçersiz', 'barkod-sistemi'));
             }
 
             $order = wc_create_order();
             if (is_wp_error($order)) {
                 error_log('[BARKOD_SATIS_ERROR] Order creation failed: ' . $order->get_error_message());
-                wp_send_json_error('Sipariş oluşturulamadı');
+                wp_send_json_error(__('Sipariş oluşturulamadı', 'barkod-sistemi'));
             }
 
             $toplam_tutar = 0;
@@ -1090,12 +1090,12 @@ class Barkod_Sistemi_Admin {
 
                 if (!$product->is_in_stock()) {
                     $order->delete(true);
-                    wp_send_json_error('Ürün stokta yok: ' . $product->get_name());
+                    wp_send_json_error(sprintf(__('Ürün stokta yok: %s', 'barkod-sistemi'), $product->get_name()));
                 }
 
                 if ($product->managing_stock() && !$product->has_enough_stock($adet)) {
                     $order->delete(true);
-                    wp_send_json_error('Yetersiz stok: ' . $product->get_name());
+                    wp_send_json_error(sprintf(__('Yetersiz stok: %s', 'barkod-sistemi'), $product->get_name()));
                 }
 
                 $order->add_product($product, $adet);
@@ -1104,7 +1104,7 @@ class Barkod_Sistemi_Admin {
 
             if ($toplam_tutar <= 0) {
                 $order->delete(true);
-                wp_send_json_error('Sipariş tutarı geçersiz');
+                wp_send_json_error(__('Sipariş tutarı geçersiz', 'barkod-sistemi'));
             }
 
             if ($musteri_id > 0) {
@@ -1175,7 +1175,7 @@ class Barkod_Sistemi_Admin {
             }
 
             wp_send_json_success([
-                'message'    => 'Satış tamamlandı',
+                'message'    => __('Satış tamamlandı', 'barkod-sistemi'),
                 'siparis_id' => $order->get_id()
             ]);
 
@@ -1187,7 +1187,7 @@ class Barkod_Sistemi_Admin {
             if (ob_get_level() > 0) {
                 ob_clean();
             }
-            wp_send_json_error('Satış tamamlanamadı. Lütfen tekrar deneyin.');
+            wp_send_json_error(__('Satış tamamlanamadı. Lütfen tekrar deneyin.', 'barkod-sistemi'));
         }
     }
     
@@ -1542,7 +1542,7 @@ class Barkod_Sistemi_Admin {
             // Yetki kontrolü
             if (!current_user_can('manage_woocommerce')) {
                 $this->log_security_event('UNAUTHORIZED_ACCESS', 'puan_bagis_yap');
-                throw new Barkod_Authorization_Exception('Yetkisiz işlem');
+                throw new Barkod_Authorization_Exception(__('Yetkisiz işlem', 'barkod-sistemi'));
             }
             
             // Nonce kontrolü
@@ -1559,14 +1559,14 @@ class Barkod_Sistemi_Admin {
             // Validasyon
             // Requirement 4.1: Müşteri doğrulama
             if (!$this->validate_customer_id($donor_user_id)) {
-                throw new Barkod_Validation_Exception('Geçersiz veya bulunamayan müşteri', 'invalid_customer');
+                throw new Barkod_Validation_Exception(__('Geçersiz veya bulunamayan müşteri', 'barkod-sistemi'), 'invalid_customer');
             }
             
             $donor = get_userdata($donor_user_id);
             
             // Requirement 4.3: Kumbara doğrulama
             if (!$this->validate_kumbara_id($kumbara_id)) {
-                throw new Barkod_Validation_Exception('Geçersiz veya aktif olmayan kumbara', 'invalid_kumbara');
+                throw new Barkod_Validation_Exception(__('Geçersiz veya aktif olmayan kumbara', 'barkod-sistemi'), 'invalid_kumbara');
             }
             
             // Kumbara manager'ı başlat
@@ -1577,7 +1577,7 @@ class Barkod_Sistemi_Admin {
             $donor_points = (int) get_user_meta($donor_user_id, 'wps_wpr_points', true);
             
             if (!$this->validate_donation_points($points, $donor_points)) {
-                throw new Barkod_Validation_Exception('Geçersiz bağış miktarı veya yetersiz puan bakiyesi', 'insufficient_points');
+                throw new Barkod_Validation_Exception(__('Geçersiz bağış miktarı veya yetersiz puan bakiyesi', 'barkod-sistemi'), 'insufficient_points');
             }
             
             // Requirement 4.5: Atomic transaction ile puan transferi
@@ -1592,14 +1592,14 @@ class Barkod_Sistemi_Admin {
                 $update_donor = update_user_meta($donor_user_id, 'wps_wpr_points', $new_donor_points);
                 
                 if ($update_donor === false) {
-                    throw new Barkod_Database_Exception('Bağışçı puan güncellemesi başarısız');
+                    throw new Barkod_Database_Exception(__('Bağışçı puan güncellemesi başarısız', 'barkod-sistemi'));
                 }
                 
                 // 2. Kumbaraya puan ekle
                 $update_kumbara = $kumbara_manager->update_kumbara_points($kumbara_id, $points);
                 
                 if (!$update_kumbara) {
-                    throw new Barkod_Database_Exception('Kumbara puan güncellemesi başarısız');
+                    throw new Barkod_Database_Exception(__('Kumbara puan güncellemesi başarısız', 'barkod-sistemi'));
                 }
                 
                 // 3. İşlem loguna kayıt
@@ -1621,7 +1621,7 @@ class Barkod_Sistemi_Admin {
                 );
                 
                 if ($log_result === false) {
-                    throw new Barkod_Database_Exception('Log kaydı başarısız');
+                    throw new Barkod_Database_Exception(__('Log kaydı başarısız', 'barkod-sistemi'));
                 }
                 
                 // Transaction commit
@@ -1647,7 +1647,7 @@ class Barkod_Sistemi_Admin {
                 
                 // Başarı response
                 wp_send_json_success([
-                    'message' => 'Puan bağışı başarıyla tamamlandı',
+                    'message' => __('Puan bağışı başarıyla tamamlandı', 'barkod-sistemi'),
                     'donor_new_balance' => $new_donor_points,
                     'kumbara_new_total' => $kumbara['total_points'] + $points
                 ]);
@@ -1680,7 +1680,7 @@ class Barkod_Sistemi_Admin {
                 ['error_code' => $e->getErrorCode()],
                 Barkod_Logger::CATEGORY_ERROR
             );
-            wp_send_json_error('Puan bağışı işlemi başarısız: Veritabanı hatası');
+            wp_send_json_error(__('Puan bağışı işlemi başarısız: Veritabanı hatası', 'barkod-sistemi'));
             
         } catch (Exception $e) {
             $this->logger->critical(
@@ -1692,7 +1692,7 @@ class Barkod_Sistemi_Admin {
                 ],
                 Barkod_Logger::CATEGORY_ERROR
             );
-            wp_send_json_error('Beklenmeyen bir hata oluştu');
+            wp_send_json_error(__('Beklenmeyen bir hata oluştu', 'barkod-sistemi'));
         }
     }
     
@@ -1897,7 +1897,7 @@ class Barkod_Sistemi_Admin {
         // Yetki kontrolü
         if (!current_user_can('manage_woocommerce')) {
             $this->log_security_event('UNAUTHORIZED_ACCESS', 'kumbara_listesi_getir');
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         
         // Nonce kontrolü
@@ -2215,7 +2215,7 @@ class Barkod_Sistemi_Admin {
             $sms_options['sms_daily_limit'] = 0;
             update_option('iletimerkezi_sms_options', $sms_options);
             
-            $message = 'Spam limitleri başarıyla devre dışı bırakıldı!';
+            $message = __('Spam limitleri başarıyla devre dışı bırakıldı!', 'barkod-sistemi');
             $message_type = 'success';
         }
         
@@ -2226,7 +2226,7 @@ class Barkod_Sistemi_Admin {
             $sms_options['sms_daily_limit'] = 500;
             update_option('iletimerkezi_sms_options', $sms_options);
             
-            $message = 'Spam limitleri başarıyla artırıldı! (100 SMS/saat, 500 SMS/gün)';
+            $message = __('Spam limitleri başarıyla artırıldı! (100 SMS/saat, 500 SMS/gün)', 'barkod-sistemi');
             $message_type = 'success';
         }
         
@@ -2239,7 +2239,7 @@ class Barkod_Sistemi_Admin {
                 "DELETE FROM $table_name WHERE created_at > DATE_SUB(NOW(), INTERVAL 24 HOUR)"
             );
             
-            $message = 'Son 24 saatteki ' . $deleted . ' SMS log kaydı temizlendi!';
+            $message = sprintf(__('Son 24 saatteki %d SMS log kaydı temizlendi!', 'barkod-sistemi'), $deleted);
             $message_type = 'success';
         }
         
@@ -2247,7 +2247,7 @@ class Barkod_Sistemi_Admin {
             // SMS servisini etkinleştir
             update_option('barkod_sms_enabled', '1');
             
-            $message = 'Barkod SMS servisi etkinleştirildi!';
+            $message = __('Barkod SMS servisi etkinleştirildi!', 'barkod-sistemi');
             $message_type = 'success';
         }
         
@@ -2711,23 +2711,23 @@ class Barkod_Sistemi_Admin {
 
     public function iade_siparis_ara_callback(): void {
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
         $this->check_rate_limit('iade_siparis_ara');
 
         $siparis_id = intval($_POST['siparis_id'] ?? 0);
         if ($siparis_id <= 0) {
-            wp_send_json_error('Geçerli bir sipariş numarası girin');
+            wp_send_json_error(__('Geçerli bir sipariş numarası girin', 'barkod-sistemi'));
         }
 
         $order = wc_get_order($siparis_id);
         if (!$order) {
-            wp_send_json_error('Sipariş bulunamadı (#' . $siparis_id . ')');
+            wp_send_json_error(sprintf(__('Sipariş bulunamadı (#%s)', 'barkod-sistemi'), $siparis_id));
         }
 
         if ($order->get_status() !== 'completed') {
-            wp_send_json_error('Sadece tamamlanmış (completed) siparişler iade edilebilir');
+            wp_send_json_error(__('Sadece tamamlanmış (completed) siparişler iade edilebilir', 'barkod-sistemi'));
         }
 
         $items = [];
@@ -2784,7 +2784,7 @@ class Barkod_Sistemi_Admin {
 
     public function iade_islemini_tamamla_callback(): void {
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
         $this->check_rate_limit('iade_islemini_tamamla');
@@ -2795,9 +2795,9 @@ class Barkod_Sistemi_Admin {
 
         try {
             $order = wc_get_order($siparis_id);
-            if (!$order) throw new Exception('Sipariş bulunamadı');
+            if (!$order) throw new Exception(__('Sipariş bulunamadı', 'barkod-sistemi'));
             if ($order->get_status() !== 'completed') {
-                throw new Exception('Sadece tamamlanmış siparişler iade edilebilir');
+                throw new Exception(__('Sadece tamamlanmış siparişler iade edilebilir', 'barkod-sistemi'));
             }
 
             $refund_amount = 0;
@@ -2819,7 +2819,7 @@ class Barkod_Sistemi_Admin {
                 ];
             }
 
-            if ($refund_amount <= 0) throw new Exception('İade tutarı geçersiz');
+            if ($refund_amount <= 0) throw new Exception(__('İade tutarı geçersiz', 'barkod-sistemi'));
 
             $refund = wc_create_refund([
                 'order_id'     => $siparis_id,
@@ -2850,17 +2850,17 @@ class Barkod_Sistemi_Admin {
                     $mevcut_puan         = (int) get_user_meta($customer_id, 'wps_wpr_points', true);
                     $yeni_puan           = max(0, $mevcut_puan - $geri_alinacak_puan);
                     update_user_meta($customer_id, 'wps_wpr_points', $yeni_puan);
-                    $order->add_order_note(sprintf('İade: %d puan geri alındı.', $geri_alinacak_puan));
-                    $puan_mesaj = " {$geri_alinacak_puan} puan geri alındı.";
+                    $order->add_order_note(sprintf(__('İade: %d puan geri alındı.', 'barkod-sistemi'), $geri_alinacak_puan));
+                    $puan_mesaj = ' ' . sprintf(__('%d puan geri alındı.', 'barkod-sistemi'), $geri_alinacak_puan);
                 }
             }
 
-            $order->add_order_note(sprintf('POS İade: %.2f ₺ iade edildi.', $refund_amount));
+            $order->add_order_note(sprintf(__('POS İade: %.2f ₺ iade edildi.', 'barkod-sistemi'), $refund_amount));
 
             $this->send_refund_notification($order, $refund_amount, $puan_mesaj);
 
             wp_send_json_success([
-                'message'       => number_format($refund_amount, 2, ',', '.') . ' ₺ tutarında iade tamamlandı.' . $puan_mesaj,
+                'message'       => sprintf(__('%s ₺ tutarında iade tamamlandı.', 'barkod-sistemi'), number_format($refund_amount, 2, ',', '.')) . $puan_mesaj,
                 'refund_id'     => $refund->get_id(),
                 'refund_amount' => $refund_amount,
             ]);
@@ -3128,7 +3128,7 @@ class Barkod_Sistemi_Admin {
 
     public function kasa_kapanisi_getir_callback(): void {
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
         $this->check_rate_limit('kasa_kapanisi_getir');
@@ -3198,7 +3198,7 @@ class Barkod_Sistemi_Admin {
 
     public function skt_urunleri_getir_callback(): void {
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error('Yetkisiz işlem');
+            wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
         }
         check_ajax_referer('barkod_sistemi_nonce', 'nonce');
 

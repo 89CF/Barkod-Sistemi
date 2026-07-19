@@ -30,6 +30,8 @@ require_once BARKOD_SISTEMI_PLUGIN_DIR . 'includes/class-barkod-logger.php';
 
 if (!function_exists('barkod_sistemi_init')) :
 function barkod_sistemi_init() {
+    load_plugin_textdomain('barkod-sistemi', false, dirname(plugin_basename(__FILE__)) . '/languages');
+
     if (!did_action('woocommerce_loaded')) {
         return;
     }
@@ -63,16 +65,16 @@ add_action('wp_ajax_test_telegram_bot', function() {
     check_ajax_referer('test_telegram_bot', 'nonce');
     
     if (!current_user_can('manage_woocommerce')) {
-        wp_send_json_error('Yetkisiz işlem');
+        wp_send_json_error(__('Yetkisiz işlem', 'barkod-sistemi'));
     }
-    
+
     $bot = new Barkod_Telegram_Bot();
-    
+
     if (!$bot->is_configured()) {
-        wp_send_json_error('Bot yapılandırılmamış');
+        wp_send_json_error(__('Bot yapılandırılmamış', 'barkod-sistemi'));
     }
-    
-    $bot->send_message("✅ Test mesajı!\n\n🤖 Telegram bot başarıyla yapılandırıldı.\n⏰ " . current_time('d.m.Y H:i:s'));
+
+    $bot->send_message(sprintf(__("✅ Test mesajı!\n\n🤖 Telegram bot başarıyla yapılandırıldı.\n⏰ %s", 'barkod-sistemi'), current_time('d.m.Y H:i:s')));
     wp_send_json_success();
 });
 

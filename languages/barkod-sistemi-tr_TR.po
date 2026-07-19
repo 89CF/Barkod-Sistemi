@@ -1,0 +1,843 @@
+# Copyright (C) 2026 BSoD
+# This file is distributed under the same license as the Barkod Sistemi plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Barkod Sistemi 1.5.0\n"
+"Report-Msgid-Bugs-To: https://github.com/89CF/Barkod-Sistemi/issues\n"
+"POT-Creation-Date: 2026-07-19 06:37+0000\n"
+"PO-Revision-Date: 2026-07-19 06:37+0000\n"
+"Last-Translator: BSoD\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: manual\n"
+"X-Domain: barkod-sistemi\n"
+
+#: barkod-sistemi.php:68 #: includes/class-barkod-sistemi-admin.php:554 #: includes/class-barkod-sistemi-admin.php:619 #: includes/class-barkod-sistemi-admin.php:688 #: includes/class-barkod-sistemi-admin.php:773 #: includes/class-barkod-sistemi-admin.php:909 #: includes/class-barkod-sistemi-admin.php:1056 #: includes/class-barkod-sistemi-admin.php:1545 #: includes/class-barkod-sistemi-admin.php:1900 #: includes/class-barkod-sistemi-admin.php:2714 #: includes/class-barkod-sistemi-admin.php:2787 #: includes/class-barkod-sistemi-admin.php:3131 #: includes/class-barkod-sistemi-admin.php:3201
+msgid "Yetkisiz işlem"
+msgstr "Yetkisiz işlem"
+
+#: barkod-sistemi.php:74
+msgid "Bot yapılandırılmamış"
+msgstr "Bot yapılandırılmamış"
+
+#: barkod-sistemi.php:77
+msgid "✅ Test mesajı!\n"
+"\n"
+"🤖 Telegram bot başarıyla yapılandırıldı.\n"
+"⏰ %s"
+msgstr "✅ Test mesajı!\n"
+"\n"
+"🤖 Telegram bot başarıyla yapılandırıldı.\n"
+"⏰ %s"
+
+#: includes/class-barkod-sistemi-admin.php:214 #: includes/class-barkod-sistemi-admin.php:215
+msgid "POS Sistemi"
+msgstr "POS Sistemi"
+
+#: includes/class-barkod-sistemi-admin.php:227 #: includes/class-barkod-sistemi-admin.php:228 #: includes/class-barkod-sistemi-admin.php:1302
+msgid "Barkod Geçmişi"
+msgstr "Barkod Geçmişi"
+
+#: includes/class-barkod-sistemi-admin.php:237 #: includes/class-barkod-sistemi-admin.php:238
+msgid "SMS Test & Ayarlar"
+msgstr "SMS Test & Ayarlar"
+
+#: includes/class-barkod-sistemi-admin.php:247 #: includes/class-barkod-sistemi-admin.php:248
+msgid "İade İşlemi"
+msgstr "İade İşlemi"
+
+#: includes/class-barkod-sistemi-admin.php:257 #: includes/class-barkod-sistemi-admin.php:258
+msgid "Kasa Kapanışı"
+msgstr "Kasa Kapanışı"
+
+#: includes/class-barkod-sistemi-admin.php:398
+msgid "Çok fazla deneme yaptınız. Lütfen 1 dakika bekleyin."
+msgstr "Çok fazla deneme yaptınız. Lütfen 1 dakika bekleyin."
+
+#: includes/class-barkod-sistemi-admin.php:565
+msgid "Geçersiz kullanıcı adı (3-60 karakter, sadece harf, rakam, boşluk ve alt çizgi)"
+msgstr "Geçersiz kullanıcı adı (3-60 karakter, sadece harf, rakam, boşluk ve alt çizgi)"
+
+#: includes/class-barkod-sistemi-admin.php:569
+msgid "Geçersiz e-posta adresi"
+msgstr "Geçersiz e-posta adresi"
+
+#: includes/class-barkod-sistemi-admin.php:573
+msgid "Geçersiz telefon numarası (10 rakam gerekli)"
+msgstr "Geçersiz telefon numarası (10 rakam gerekli)"
+
+#: includes/class-barkod-sistemi-admin.php:579
+msgid "Bu e-posta adresi zaten kayıtlı"
+msgstr "Bu e-posta adresi zaten kayıtlı"
+
+#: includes/class-barkod-sistemi-admin.php:590
+msgid "Bu telefon numarası zaten kayıtlı"
+msgstr "Bu telefon numarası zaten kayıtlı"
+
+#: includes/class-barkod-sistemi-admin.php:594
+msgid "Bu kullanıcı adı zaten kullanılıyor"
+msgstr "Bu kullanıcı adı zaten kullanılıyor"
+
+#: includes/class-barkod-sistemi-admin.php:606
+msgid "Kullanıcı oluşturulamadı: %s"
+msgstr "Kullanıcı oluşturulamadı: %s"
+
+#: includes/class-barkod-sistemi-admin.php:612
+msgid "Kullanıcı başarıyla oluşturuldu"
+msgstr "Kullanıcı başarıyla oluşturuldu"
+
+#: includes/class-barkod-sistemi-admin.php:627
+msgid "Geçerli bir telefon numarası girin (10 rakam)"
+msgstr "Geçerli bir telefon numarası girin (10 rakam)"
+
+#: includes/class-barkod-sistemi-admin.php:681
+msgid "Müşteri bulunamadı"
+msgstr "Müşteri bulunamadı"
+
+#: includes/class-barkod-sistemi-admin.php:696
+msgid "Geçersiz barkod formatı (8-20 karakter olmalı)"
+msgstr "Geçersiz barkod formatı (8-20 karakter olmalı)"
+
+#: includes/class-barkod-sistemi-admin.php:719 #: includes/class-barkod-sistemi-admin.php:818 #: includes/class-barkod-sistemi-admin.php:824
+msgid "Ürün stokta yok"
+msgstr "Ürün stokta yok"
+
+#: includes/class-barkod-sistemi-admin.php:749 #: includes/class-barkod-sistemi-admin.php:808 #: includes/class-barkod-sistemi-admin.php:934 #: includes/class-barkod-sistemi-admin.php:1402
+msgid "Ürün bulunamadı"
+msgstr "Ürün bulunamadı"
+
+#: includes/class-barkod-sistemi-admin.php:788
+msgid "Geçersiz barkod formatı (8-20 karakter, sadece rakam)"
+msgstr "Geçersiz barkod formatı (8-20 karakter, sadece rakam)"
+
+#: includes/class-barkod-sistemi-admin.php:887 #: includes/class-barkod-sistemi-admin.php:1695
+msgid "Beklenmeyen bir hata oluştu"
+msgstr "Beklenmeyen bir hata oluştu"
+
+#: includes/class-barkod-sistemi-admin.php:924
+msgid "Geçersiz ürün ID"
+msgstr "Geçersiz ürün ID"
+
+#: includes/class-barkod-sistemi-admin.php:928
+msgid "Barkod adedi 1-1000 arasında olmalıdır"
+msgstr "Barkod adedi 1-1000 arasında olmalıdır"
+
+#: includes/class-barkod-sistemi-admin.php:995
+msgid "Barkod basma işlemi başarılı"
+msgstr "Barkod basma işlemi başarılı"
+
+#: includes/class-barkod-sistemi-admin.php:1034
+msgid "Barkod basma işlemi başarısız"
+msgstr "Barkod basma işlemi başarısız"
+
+#: includes/class-barkod-sistemi-admin.php:1059
+msgid "Güvenlik doğrulaması başarısız. Sayfayı yenileyip tekrar deneyin."
+msgstr "Güvenlik doğrulaması başarısız. Sayfayı yenileyip tekrar deneyin."
+
+#: includes/class-barkod-sistemi-admin.php:1071
+msgid "Sepet boş veya geçersiz"
+msgstr "Sepet boş veya geçersiz"
+
+#: includes/class-barkod-sistemi-admin.php:1077
+msgid "Sipariş oluşturulamadı"
+msgstr "Sipariş oluşturulamadı"
+
+#: includes/class-barkod-sistemi-admin.php:1093
+msgid "Ürün stokta yok: %s"
+msgstr "Ürün stokta yok: %s"
+
+#: includes/class-barkod-sistemi-admin.php:1098
+msgid "Yetersiz stok: %s"
+msgstr "Yetersiz stok: %s"
+
+#: includes/class-barkod-sistemi-admin.php:1107
+msgid "Sipariş tutarı geçersiz"
+msgstr "Sipariş tutarı geçersiz"
+
+#: includes/class-barkod-sistemi-admin.php:1178
+msgid "Satış tamamlandı"
+msgstr "Satış tamamlandı"
+
+#: includes/class-barkod-sistemi-admin.php:1190
+msgid "Satış tamamlanamadı. Lütfen tekrar deneyin."
+msgstr "Satış tamamlanamadı. Lütfen tekrar deneyin."
+
+#: includes/class-barkod-sistemi-admin.php:1200 #: includes/class-barkod-sistemi-admin.php:2203 #: includes/class-barkod-sistemi-admin.php:2507 #: includes/class-barkod-sistemi-admin.php:2901
+msgid "Bu sayfaya erişim yetkiniz yok."
+msgstr "Bu sayfaya erişim yetkiniz yok."
+
+#: includes/class-barkod-sistemi-admin.php:1213
+msgid "Barkod Basma Geçmişi"
+msgstr "Barkod Basma Geçmişi"
+
+#: includes/class-barkod-sistemi-admin.php:1217
+msgid "Hata:"
+msgstr "Hata:"
+
+#: includes/class-barkod-sistemi-admin.php:1218
+msgid "Barkod basma geçmişi tablosu bulunamadı. Lütfen plugin'i devre dışı bırakıp tekrar etkinleştirin."
+msgstr "Barkod basma geçmişi tablosu bulunamadı. Lütfen plugin'i devre dışı bırakıp tekrar etkinleştirin."
+
+#: includes/class-barkod-sistemi-admin.php:1221
+msgid "Tablo adı:"
+msgstr "Tablo adı:"
+
+#: includes/class-barkod-sistemi-admin.php:1314
+msgid "Ürün ID"
+msgstr "Ürün ID"
+
+#: includes/class-barkod-sistemi-admin.php:1321 #: includes/class-barkod-sistemi-admin.php:1377
+msgid "Kullanıcı"
+msgstr "Kullanıcı"
+
+#: includes/class-barkod-sistemi-admin.php:1323
+msgid "Tüm Kullanıcılar"
+msgstr "Tüm Kullanıcılar"
+
+#: includes/class-barkod-sistemi-admin.php:1335
+msgid "Başlangıç"
+msgstr "Başlangıç"
+
+#: includes/class-barkod-sistemi-admin.php:1342
+msgid "Bitiş"
+msgstr "Bitiş"
+
+#: includes/class-barkod-sistemi-admin.php:1350
+msgid "Filtrele"
+msgstr "Filtrele"
+
+#: includes/class-barkod-sistemi-admin.php:1362
+msgid "İşlem Kayıtları"
+msgstr "İşlem Kayıtları"
+
+#: includes/class-barkod-sistemi-admin.php:1364
+msgid "CSV Olarak İndir"
+msgstr "CSV Olarak İndir"
+
+#: includes/class-barkod-sistemi-admin.php:1373
+msgid "ID"
+msgstr "ID"
+
+#: includes/class-barkod-sistemi-admin.php:1374
+msgid "Ürün"
+msgstr "Ürün"
+
+#: includes/class-barkod-sistemi-admin.php:1375
+msgid "SKU"
+msgstr "SKU"
+
+#: includes/class-barkod-sistemi-admin.php:1376
+msgid "Adet"
+msgstr "Adet"
+
+#: includes/class-barkod-sistemi-admin.php:1378
+msgid "Tarih"
+msgstr "Tarih"
+
+#: includes/class-barkod-sistemi-admin.php:1385
+msgid "Kayıt bulunamadı."
+msgstr "Kayıt bulunamadı."
+
+#: includes/class-barkod-sistemi-admin.php:1414
+msgid "Bilinmeyen"
+msgstr "Bilinmeyen"
+
+#: includes/class-barkod-sistemi-admin.php:1562
+msgid "Geçersiz veya bulunamayan müşteri"
+msgstr "Geçersiz veya bulunamayan müşteri"
+
+#: includes/class-barkod-sistemi-admin.php:1569
+msgid "Geçersiz veya aktif olmayan kumbara"
+msgstr "Geçersiz veya aktif olmayan kumbara"
+
+#: includes/class-barkod-sistemi-admin.php:1580
+msgid "Geçersiz bağış miktarı veya yetersiz puan bakiyesi"
+msgstr "Geçersiz bağış miktarı veya yetersiz puan bakiyesi"
+
+#: includes/class-barkod-sistemi-admin.php:1595
+msgid "Bağışçı puan güncellemesi başarısız"
+msgstr "Bağışçı puan güncellemesi başarısız"
+
+#: includes/class-barkod-sistemi-admin.php:1602
+msgid "Kumbara puan güncellemesi başarısız"
+msgstr "Kumbara puan güncellemesi başarısız"
+
+#: includes/class-barkod-sistemi-admin.php:1624
+msgid "Log kaydı başarısız"
+msgstr "Log kaydı başarısız"
+
+#: includes/class-barkod-sistemi-admin.php:1650
+msgid "Puan bağışı başarıyla tamamlandı"
+msgstr "Puan bağışı başarıyla tamamlandı"
+
+#: includes/class-barkod-sistemi-admin.php:1683
+msgid "Puan bağışı işlemi başarısız: Veritabanı hatası"
+msgstr "Puan bağışı işlemi başarısız: Veritabanı hatası"
+
+#: includes/class-barkod-sistemi-admin.php:2218
+msgid "Spam limitleri başarıyla devre dışı bırakıldı!"
+msgstr "Spam limitleri başarıyla devre dışı bırakıldı!"
+
+#: includes/class-barkod-sistemi-admin.php:2229
+msgid "Spam limitleri başarıyla artırıldı! (100 SMS/saat, 500 SMS/gün)"
+msgstr "Spam limitleri başarıyla artırıldı! (100 SMS/saat, 500 SMS/gün)"
+
+#: includes/class-barkod-sistemi-admin.php:2242
+msgid "Son 24 saatteki %d SMS log kaydı temizlendi!"
+msgstr "Son 24 saatteki %d SMS log kaydı temizlendi!"
+
+#: includes/class-barkod-sistemi-admin.php:2250
+msgid "Barkod SMS servisi etkinleştirildi!"
+msgstr "Barkod SMS servisi etkinleştirildi!"
+
+#: includes/class-barkod-sistemi-admin.php:2721
+msgid "Geçerli bir sipariş numarası girin"
+msgstr "Geçerli bir sipariş numarası girin"
+
+#: includes/class-barkod-sistemi-admin.php:2726
+msgid "Sipariş bulunamadı (#%s)"
+msgstr "Sipariş bulunamadı (#%s)"
+
+#: includes/class-barkod-sistemi-admin.php:2730
+msgid "Sadece tamamlanmış (completed) siparişler iade edilebilir"
+msgstr "Sadece tamamlanmış (completed) siparişler iade edilebilir"
+
+#: includes/class-barkod-sistemi-admin.php:2798
+msgid "Sipariş bulunamadı"
+msgstr "Sipariş bulunamadı"
+
+#: includes/class-barkod-sistemi-admin.php:2800
+msgid "Sadece tamamlanmış siparişler iade edilebilir"
+msgstr "Sadece tamamlanmış siparişler iade edilebilir"
+
+#: includes/class-barkod-sistemi-admin.php:2822
+msgid "İade tutarı geçersiz"
+msgstr "İade tutarı geçersiz"
+
+#: includes/class-barkod-sistemi-admin.php:2853
+msgid "İade: %d puan geri alındı."
+msgstr "İade: %d puan geri alındı."
+
+#: includes/class-barkod-sistemi-admin.php:2854
+msgid "%d puan geri alındı."
+msgstr "%d puan geri alındı."
+
+#: includes/class-barkod-sistemi-admin.php:2858
+msgid "POS İade: %.2f ₺ iade edildi."
+msgstr "POS İade: %.2f ₺ iade edildi."
+
+#: includes/class-barkod-sistemi-admin.php:2863
+msgid "%s ₺ tutarında iade tamamlandı."
+msgstr "%s ₺ tutarında iade tamamlandı."
+
+#: includes/class-barkod-sms-service.php:71 #: includes/class-barkod-sms-service.php:99
+msgid "SMS servisi devre dışı"
+msgstr "SMS servisi devre dışı"
+
+#: includes/class-barkod-sms-service.php:148
+msgid "SMS gönderimi başarısız"
+msgstr "SMS gönderimi başarısız"
+
+#: includes/class-barkod-sms-service.php:294
+msgid "Merhaba {donor_name}, {kumbara_name} kumbarasına {tl} TL değerindeki puan bağışınız gerçekleşti. Teşekkürler! - {shop_name}"
+msgstr "Merhaba {donor_name}, {kumbara_name} kumbarasına {tl} TL değerindeki puan bağışınız gerçekleşti. Teşekkürler! - {shop_name}"
+
+#: includes/class-barkod-sms-service.php:328
+msgid "Merhaba {owner_name}, {donor_name} tarafından {kumbara_name} kumbaranıza {tl} TL değerinde puan bağışı yapıldı.Kumbaranızda toplam {total_donate} TL değerinde para puan bulunmakta! - {shop_name}"
+msgstr "Merhaba {owner_name}, {donor_name} tarafından {kumbara_name} kumbaranıza {tl} TL değerinde puan bağışı yapıldı.Kumbaranızda toplam {total_donate} TL değerinde para puan bulunmakta! - {shop_name}"
+
+#: includes/class-barkod-telegram-bot.php:26
+msgid "📦 <b>Yeni Satış!</b>\n"
+"\n"
+""
+msgstr "📦 <b>Yeni Satış!</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:27
+msgid "🔢 Sipariş: #"
+msgstr "🔢 Sipariş: #"
+
+#: includes/class-barkod-telegram-bot.php:28
+msgid "💰 Tutar: "
+msgstr "💰 Tutar: "
+
+#: includes/class-barkod-telegram-bot.php:31
+msgid "👤 Müşteri: "
+msgstr "👤 Müşteri: "
+
+#: includes/class-barkod-telegram-bot.php:35 #: includes/class-barkod-telegram-bot.php:123
+msgid "⭐ Kullanılan Puan: "
+msgstr "⭐ Kullanılan Puan: "
+
+#: includes/class-barkod-telegram-bot.php:39 #: includes/class-barkod-telegram-bot.php:124
+msgid "🎁 Kazanılan Puan: "
+msgstr "🎁 Kazanılan Puan: "
+
+#: includes/class-barkod-telegram-bot.php:45
+msgid "Mod: "
+msgstr "Mod: "
+
+#: includes/class-barkod-telegram-bot.php:64
+msgid "⚠️ <b>Düşük Stok Uyarısı!</b>\n"
+"\n"
+""
+msgstr "⚠️ <b>Düşük Stok Uyarısı!</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:65
+msgid "📦 Ürün: "
+msgstr "📦 Ürün: "
+
+#: includes/class-barkod-telegram-bot.php:66
+msgid "📊 Kalan: "
+msgstr "📊 Kalan: "
+
+#: includes/class-barkod-telegram-bot.php:66
+msgid "adet"
+msgstr "adet"
+
+#: includes/class-barkod-telegram-bot.php:67 #: includes/class-barkod-telegram-bot.php:247
+msgid "🔢 Barkod: "
+msgstr "🔢 Barkod: "
+
+#: includes/class-barkod-telegram-bot.php:117
+msgid "📊 <b>Günlük Satış Raporu</b>\n"
+""
+msgstr "📊 <b>Günlük Satış Raporu</b>\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:118 #: includes/class-barkod-telegram-bot.php:280
+msgid "📅 Tarih: "
+msgstr "📅 Tarih: "
+
+#: includes/class-barkod-telegram-bot.php:120
+msgid "💰 Toplam Satış: "
+msgstr "💰 Toplam Satış: "
+
+#: includes/class-barkod-telegram-bot.php:121
+msgid "🛒 Sipariş Sayısı: "
+msgstr "🛒 Sipariş Sayısı: "
+
+#: includes/class-barkod-telegram-bot.php:122
+msgid "👥 Müşteri Sayısı: "
+msgstr "👥 Müşteri Sayısı: "
+
+#: includes/class-barkod-telegram-bot.php:134
+msgid "🚨 <b>Güvenlik Uyarısı!</b>\n"
+"\n"
+""
+msgstr "🚨 <b>Güvenlik Uyarısı!</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:135
+msgid "⚠️ Olay: %s\n"
+""
+msgstr "⚠️ Olay: %s\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:136
+msgid "📝 Detay: %s\n"
+""
+msgstr "📝 Detay: %s\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:137
+msgid "⏰ Zaman: "
+msgstr "⏰ Zaman: "
+
+#: includes/class-barkod-telegram-bot.php:146
+msgid "❌ Bot yapılandırılmamış."
+msgstr "❌ Bot yapılandırılmamış."
+
+#: includes/class-barkod-telegram-bot.php:176
+msgid "❌ Bilinmeyen komut. /help yazarak komutları görebilirsiniz."
+msgstr "❌ Bilinmeyen komut. /help yazarak komutları görebilirsiniz."
+
+#: includes/class-barkod-telegram-bot.php:183
+msgid "❌ Kullanım: /musteri [telefon]"
+msgstr "❌ Kullanım: /musteri [telefon]"
+
+#: includes/class-barkod-telegram-bot.php:200 #: includes/class-barkod-telegram-bot.php:396
+msgid "❌ Müşteri bulunamadı."
+msgstr "❌ Müşteri bulunamadı."
+
+#: includes/class-barkod-telegram-bot.php:206
+msgid "👤 <b>Müşteri Bilgisi</b>\n"
+"\n"
+""
+msgstr "👤 <b>Müşteri Bilgisi</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:207
+msgid "📛 Ad: "
+msgstr "📛 Ad: "
+
+#: includes/class-barkod-telegram-bot.php:208
+msgid "📧 E-posta: "
+msgstr "📧 E-posta: "
+
+#: includes/class-barkod-telegram-bot.php:209
+msgid "📱 Telefon: "
+msgstr "📱 Telefon: "
+
+#: includes/class-barkod-telegram-bot.php:210
+msgid "⭐ Puan: "
+msgstr "⭐ Puan: "
+
+#: includes/class-barkod-telegram-bot.php:218
+msgid "❌ Kullanım: /stok [barkod]"
+msgstr "❌ Kullanım: /stok [barkod]"
+
+#: includes/class-barkod-telegram-bot.php:238 #: includes/class-barkod-telegram-bot.php:310 #: includes/class-barkod-telegram-bot.php:346
+msgid "❌ Ürün bulunamadı."
+msgstr "❌ Ürün bulunamadı."
+
+#: includes/class-barkod-telegram-bot.php:245
+msgid "📦 <b>Stok Bilgisi</b>\n"
+"\n"
+""
+msgstr "📦 <b>Stok Bilgisi</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:246
+msgid "📛 Ürün: "
+msgstr "📛 Ürün: "
+
+#: includes/class-barkod-telegram-bot.php:248
+msgid "💰 Fiyat: "
+msgstr "💰 Fiyat: "
+
+#: includes/class-barkod-telegram-bot.php:252
+msgid "📊 Stok: %d adet\n"
+""
+msgstr "📊 Stok: %d adet\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:255
+msgid "⚠️ Düşük stok!"
+msgstr "⚠️ Düşük stok!"
+
+#: includes/class-barkod-telegram-bot.php:258
+msgid "📊 Stok: Takip edilmiyor"
+msgstr "📊 Stok: Takip edilmiyor"
+
+#: includes/class-barkod-telegram-bot.php:279
+msgid "💰 <b>Bugünkü Satışlar</b>\n"
+"\n"
+""
+msgstr "💰 <b>Bugünkü Satışlar</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:281
+msgid "🛒 Sipariş: "
+msgstr "🛒 Sipariş: "
+
+#: includes/class-barkod-telegram-bot.php:282
+msgid "💵 Toplam: "
+msgstr "💵 Toplam: "
+
+#: includes/class-barkod-telegram-bot.php:290
+msgid "✅ Detaylı rapor gönderildi."
+msgstr "✅ Detaylı rapor gönderildi."
+
+#: includes/class-barkod-telegram-bot.php:296
+msgid "❌ Kullanım: /indirim [barkod] [yüzde]"
+msgstr "❌ Kullanım: /indirim [barkod] [yüzde]"
+
+#: includes/class-barkod-telegram-bot.php:303
+msgid "❌ İndirim yüzdesi 0-100 arasında olmalı."
+msgstr "❌ İndirim yüzdesi 0-100 arasında olmalı."
+
+#: includes/class-barkod-telegram-bot.php:323
+msgid "✅ İndirim uygulandı!\n"
+"\n"
+"📦 Ürün: %1$s\n"
+"💰 Eski Fiyat: %2$s TL\n"
+"🏷️ Yeni Fiyat: %3$s TL\n"
+"📉 İndirim: %%%4$s"
+msgstr "✅ İndirim uygulandı!\n"
+"\n"
+"📦 Ürün: %1$s\n"
+"💰 Eski Fiyat: %2$s TL\n"
+"🏷️ Yeni Fiyat: %3$s TL\n"
+"📉 İndirim: %%%4$s"
+
+#: includes/class-barkod-telegram-bot.php:333
+msgid "❌ Kullanım: /stokekle [barkod] [adet]"
+msgstr "❌ Kullanım: /stokekle [barkod] [adet]"
+
+#: includes/class-barkod-telegram-bot.php:340
+msgid "❌ Adet pozitif olmalı."
+msgstr "❌ Adet pozitif olmalı."
+
+#: includes/class-barkod-telegram-bot.php:352
+msgid "❌ Bu ürün için stok takibi yapılmıyor."
+msgstr "❌ Bu ürün için stok takibi yapılmıyor."
+
+#: includes/class-barkod-telegram-bot.php:364
+msgid "✅ Stok eklendi!\n"
+"\n"
+"📦 Ürün: %1$s\n"
+"📊 Eski Stok: %2$s\n"
+"➕ Eklenen: %3$s\n"
+"📈 Yeni Stok: %4$s"
+msgstr "✅ Stok eklendi!\n"
+"\n"
+"📦 Ürün: %1$s\n"
+"📊 Eski Stok: %2$s\n"
+"➕ Eklenen: %3$s\n"
+"📈 Yeni Stok: %4$s"
+
+#: includes/class-barkod-telegram-bot.php:374
+msgid "❌ Kullanım: /puanver [telefon] [puan]"
+msgstr "❌ Kullanım: /puanver [telefon] [puan]"
+
+#: includes/class-barkod-telegram-bot.php:381
+msgid "❌ Puan pozitif olmalı."
+msgstr "❌ Puan pozitif olmalı."
+
+#: includes/class-barkod-telegram-bot.php:408
+msgid "✅ Puan verildi!\n"
+"\n"
+"👤 Müşteri: %1$s\n"
+"⭐ Eski Puan: %2$s\n"
+"➕ Verilen: %3$s\n"
+"🎁 Yeni Puan: %4$s"
+msgstr "✅ Puan verildi!\n"
+"\n"
+"👤 Müşteri: %1$s\n"
+"⭐ Eski Puan: %2$s\n"
+"➕ Verilen: %3$s\n"
+"🎁 Yeni Puan: %4$s"
+
+#: includes/class-barkod-telegram-bot.php:418
+msgid "🤖 <b>POS Bot Komutları</b>\n"
+"\n"
+""
+msgstr "🤖 <b>POS Bot Komutları</b>\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:419
+msgid "<b>📊 Sorgular:</b>\n"
+""
+msgstr "<b>📊 Sorgular:</b>\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:420
+msgid "/musteri [telefon] - Müşteri bilgisi\n"
+""
+msgstr "/musteri [telefon] - Müşteri bilgisi\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:421
+msgid "/stok [barkod] - Stok kontrolü\n"
+""
+msgstr "/stok [barkod] - Stok kontrolü\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:422
+msgid "/satis - Bugünkü satışlar\n"
+""
+msgstr "/satis - Bugünkü satışlar\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:423
+msgid "/rapor - Detaylı rapor\n"
+"\n"
+""
+msgstr "/rapor - Detaylı rapor\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:424
+msgid "<b>⚙️ Yönetim:</b>\n"
+""
+msgstr "<b>⚙️ Yönetim:</b>\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:425
+msgid "/indirim [barkod] [%] - İndirim uygula\n"
+""
+msgstr "/indirim [barkod] [%] - İndirim uygula\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:426
+msgid "/stokekle [barkod] [adet] - Stok ekle\n"
+""
+msgstr "/stokekle [barkod] [adet] - Stok ekle\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:427
+msgid "/puanver [telefon] [puan] - Puan ver\n"
+"\n"
+""
+msgstr "/puanver [telefon] [puan] - Puan ver\n"
+"\n"
+""
+
+#: includes/class-barkod-telegram-bot.php:428
+msgid "/help - Bu mesajı göster"
+msgstr "/help - Bu mesajı göster"
+
+#: includes/class-barkod-telegram-settings.php:15
+msgid "Telegram Bot Ayarları"
+msgstr "Telegram Bot Ayarları"
+
+#: includes/class-barkod-telegram-settings.php:16 #: includes/class-barkod-telegram-settings.php:100
+msgid "Telegram Bot"
+msgstr "Telegram Bot"
+
+#: includes/class-barkod-telegram-settings.php:101
+msgid "Mağazanızı her yerden yönetin ve takip edin"
+msgstr "Mağazanızı her yerden yönetin ve takip edin"
+
+#: includes/class-barkod-telegram-settings.php:114
+msgid "Bot Kimlik Bilgileri"
+msgstr "Bot Kimlik Bilgileri"
+
+#: includes/class-barkod-telegram-settings.php:120
+msgid "Bot Token"
+msgstr "Bot Token"
+
+#: includes/class-barkod-telegram-settings.php:127
+msgid "BotFather'dan aldığınız anahtar"
+msgstr "BotFather'dan aldığınız anahtar"
+
+#: includes/class-barkod-telegram-settings.php:132
+msgid "Chat ID"
+msgstr "Chat ID"
+
+#: includes/class-barkod-telegram-settings.php:139
+msgid "Grup veya kişi ID'si"
+msgstr "Grup veya kişi ID'si"
+
+#: includes/class-barkod-telegram-settings.php:145
+msgid "Webhook Secret Token"
+msgstr "Webhook Secret Token"
+
+#: includes/class-barkod-telegram-settings.php:160
+msgid "Webhook URL'inizi kurarken bu token'ı kullanın:"
+msgstr "Webhook URL'inizi kurarken bu token'ı kullanın:"
+
+#: includes/class-barkod-telegram-settings.php:172
+msgid "Bildirim Ayarları"
+msgstr "Bildirim Ayarları"
+
+#: includes/class-barkod-telegram-settings.php:184
+msgid "Satış Bildirimleri"
+msgstr "Satış Bildirimleri"
+
+#: includes/class-barkod-telegram-settings.php:186
+msgid "Her başarılı satışta anlık bilgi mesajı gönderir."
+msgstr "Her başarılı satışta anlık bilgi mesajı gönderir."
+
+#: includes/class-barkod-telegram-settings.php:198
+msgid "Güvenlik Uyarıları"
+msgstr "Güvenlik Uyarıları"
+
+#: includes/class-barkod-telegram-settings.php:200
+msgid "Şüpheli giriş denemeleri ve sistem hatalarını bildirir."
+msgstr "Şüpheli giriş denemeleri ve sistem hatalarını bildirir."
+
+#: includes/class-barkod-telegram-settings.php:213
+msgid "Düşük Stok Uyarıları"
+msgstr "Düşük Stok Uyarıları"
+
+#: includes/class-barkod-telegram-settings.php:216
+msgid "Eşik:"
+msgstr "Eşik:"
+
+#: includes/class-barkod-telegram-settings.php:224
+msgid "ADET"
+msgstr "ADET"
+
+#: includes/class-barkod-telegram-settings.php:239
+msgid "Günlük Özet Raporu"
+msgstr "Günlük Özet Raporu"
+
+#: includes/class-barkod-telegram-settings.php:242
+msgid "Rapor Saati:"
+msgstr "Rapor Saati:"
+
+#: includes/class-barkod-telegram-settings.php:259
+msgid "Bot Komutları"
+msgstr "Bot Komutları"
+
+#: includes/class-barkod-telegram-settings.php:269
+msgid "İnteraktif Komutlar"
+msgstr "İnteraktif Komutlar"
+
+#: includes/class-barkod-telegram-settings.php:273
+msgid "Kullanılabilir Komutlar:"
+msgstr "Kullanılabilir Komutlar:"
+
+#: includes/class-barkod-telegram-settings.php:286
+msgid "Yetkili Kullanıcılar"
+msgstr "Yetkili Kullanıcılar"
+
+#: includes/class-barkod-telegram-settings.php:293
+msgid "Yönetim komutlarını kullanabilecek Telegram ID'leri (virgülle ayırın)."
+msgstr "Yönetim komutlarını kullanabilecek Telegram ID'leri (virgülle ayırın)."
+
+#: includes/class-barkod-telegram-settings.php:299
+msgid "Ayarları Kaydet"
+msgstr "Ayarları Kaydet"
+
+#: includes/class-barkod-telegram-settings.php:309
+msgid "Nasıl Kurulur?"
+msgstr "Nasıl Kurulur?"
+
+#: includes/class-barkod-telegram-settings.php:314
+msgid "Telegram'da <strong>@BotFather</strong>'ı bulun ve <code>/newbot</code> ile botunuzu oluşturun."
+msgstr "Telegram'da <strong>@BotFather</strong>'ı bulun ve <code>/newbot</code> ile botunuzu oluşturun."
+
+#: includes/class-barkod-telegram-settings.php:318
+msgid "Size verilen <strong>Bot Token</strong>'ı kopyalayıp sola yapıştırın."
+msgstr "Size verilen <strong>Bot Token</strong>'ı kopyalayıp sola yapıştırın."
+
+#: includes/class-barkod-telegram-settings.php:322
+msgid "Botunuza bir mesaj gönderin ve <strong>Chat ID</strong>'nizi alın."
+msgstr "Botunuza bir mesaj gönderin ve <strong>Chat ID</strong>'nizi alın."
+
+#: includes/class-barkod-telegram-settings.php:326
+msgid "Tüm ayarları kaydedip <strong>Bağlantı Testi</strong> yapın."
+msgstr "Tüm ayarları kaydedip <strong>Bağlantı Testi</strong> yapın."
+
+#: includes/class-barkod-telegram-settings.php:331
+msgid "Bağlantı Testi"
+msgstr "Bağlantı Testi"
+
+#: includes/class-barkod-telegram-settings.php:333
+msgid "Test Mesajı Gönder"
+msgstr "Test Mesajı Gönder"
+
+#: includes/class-barkod-telegram-settings.php:342
+msgid "Test mesajı göndermek istediğinize emin misiniz?"
+msgstr "Test mesajı göndermek istediğinize emin misiniz?"
+
+#: includes/class-barkod-telegram-settings.php:353
+msgid "✅ Test mesajı gönderildi!"
+msgstr "✅ Test mesajı gönderildi!"
+
+#: includes/class-barkod-telegram-settings.php:353
+msgid "❌ Hata: "
+msgstr "❌ Hata: "
+
+#: includes/telegram-webhook.php:83
+msgid "❌ Bu komut için yetkiniz yok.\n"
+"\n"
+"Sadece yetkili kullanıcılar yönetim komutlarını kullanabilir."
+msgstr "❌ Bu komut için yetkiniz yok.\n"
+"\n"
+"Sadece yetkili kullanıcılar yönetim komutlarını kullanabilir."

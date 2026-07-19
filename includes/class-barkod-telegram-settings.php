@@ -12,8 +12,8 @@ class Barkod_Telegram_Settings {
     public function add_settings_page(): void {
         add_submenu_page(
             'dukkan-musterisi',
-            'Telegram Bot Ayarları',
-            'Telegram Bot',
+            __('Telegram Bot Ayarları', 'barkod-sistemi'),
+            __('Telegram Bot', 'barkod-sistemi'),
             'manage_woocommerce',
             'barkod-telegram-settings',
             [$this, 'render_settings_page']
@@ -97,52 +97,52 @@ class Barkod_Telegram_Settings {
         ?>
         <div class="pos-wrap">
             <div class="pos-header">
-                <h1 class="pos-title" style="color: #263238 !important; opacity: 1 !important; visibility: visible !important;">Telegram Bot</h1>
-                <p class="pos-subtitle">Mağazanızı her yerden yönetin ve takip edin</p>
+                <h1 class="pos-title" style="color: #263238 !important; opacity: 1 !important; visibility: visible !important;"><?php echo esc_html__('Telegram Bot', 'barkod-sistemi'); ?></h1>
+                <p class="pos-subtitle"><?php echo esc_html__('Mağazanızı her yerden yönetin ve takip edin', 'barkod-sistemi'); ?></p>
             </div>
-            
+
             <div class="pos-grid">
                 <!-- Sol Kolon: Ayarlar -->
                 <div class="pos-col-8">
                     <form method="post" action="options.php">
                         <?php settings_fields('barkod_telegram_settings'); ?>
-                        
+
                         <!-- Bot Kimlik Bilgileri -->
                         <div class="telegram-section">
                             <div class="telegram-header">
                                 <div class="telegram-icon">🤖</div>
-                                <h2 style="font-size: 1.8rem; margin: 0;">Bot Kimlik Bilgileri</h2>
+                                <h2 style="font-size: 1.8rem; margin: 0;"><?php echo esc_html__('Bot Kimlik Bilgileri', 'barkod-sistemi'); ?></h2>
                             </div>
-                            
+
                             <div class="pos-grid">
                                 <div class="pos-col-6">
                                     <div class="pos-form-group">
-                                        <label class="pos-label" for="barkod_telegram_bot_token">Bot Token</label>
-                                        <input type="text" 
-                                               id="barkod_telegram_bot_token" 
-                                               name="barkod_telegram_bot_token" 
-                                               value="<?php echo esc_attr(get_option('barkod_telegram_bot_token')); ?>" 
+                                        <label class="pos-label" for="barkod_telegram_bot_token"><?php echo esc_html__('Bot Token', 'barkod-sistemi'); ?></label>
+                                        <input type="text"
+                                               id="barkod_telegram_bot_token"
+                                               name="barkod_telegram_bot_token"
+                                               value="<?php echo esc_attr(get_option('barkod_telegram_bot_token')); ?>"
                                                class="pos-input"
                                                placeholder="123456789:ABC...">
-                                        <p class="description" style="margin-top: 10px; color: var(--pos-text-muted);">BotFather'dan aldığınız anahtar</p>
+                                        <p class="description" style="margin-top: 10px; color: var(--pos-text-muted);"><?php echo esc_html__("BotFather'dan aldığınız anahtar", 'barkod-sistemi'); ?></p>
                                     </div>
                                 </div>
                                 <div class="pos-col-6">
                                     <div class="pos-form-group">
-                                        <label class="pos-label" for="barkod_telegram_chat_id">Chat ID</label>
+                                        <label class="pos-label" for="barkod_telegram_chat_id"><?php echo esc_html__('Chat ID', 'barkod-sistemi'); ?></label>
                                         <input type="text"
                                                id="barkod_telegram_chat_id"
                                                name="barkod_telegram_chat_id"
                                                value="<?php echo esc_attr(get_option('barkod_telegram_chat_id')); ?>"
                                                class="pos-input"
                                                placeholder="-100123...">
-                                        <p class="description" style="margin-top: 10px; color: var(--pos-text-muted);">Grup veya kişi ID'si</p>
+                                        <p class="description" style="margin-top: 10px; color: var(--pos-text-muted);"><?php echo esc_html__("Grup veya kişi ID'si", 'barkod-sistemi'); ?></p>
                                     </div>
                                 </div>
 
                                 <div class="pos-col-12">
                                     <div class="pos-form-group">
-                                        <label class="pos-label" for="barkod_telegram_webhook_secret">Webhook Secret Token</label>
+                                        <label class="pos-label" for="barkod_telegram_webhook_secret"><?php echo esc_html__('Webhook Secret Token', 'barkod-sistemi'); ?></label>
                                         <?php
                                         $secret = get_option('barkod_telegram_webhook_secret', '');
                                         if (empty($secret)) {
@@ -157,71 +157,71 @@ class Barkod_Telegram_Settings {
                                                class="pos-input"
                                                readonly>
                                         <p class="description" style="margin-top: 10px; color: var(--pos-text-muted);">
-                                            Webhook URL'inizi kurarken bu token'ı kullanın:<br>
+                                            <?php echo esc_html__("Webhook URL'inizi kurarken bu token'ı kullanın:", 'barkod-sistemi'); ?><br>
                                             <code>https://api.telegram.org/bot[TOKEN]/setWebhook?url=[URL]&secret_token=<?php echo esc_attr($secret); ?></code>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Bildirim Ayarları -->
                         <div class="telegram-section">
                             <div class="telegram-header">
                                 <div class="telegram-icon">📢</div>
-                                <h2 style="font-size: 1.8rem; margin: 0;">Bildirim Ayarları</h2>
+                                <h2 style="font-size: 1.8rem; margin: 0;"><?php echo esc_html__('Bildirim Ayarları', 'barkod-sistemi'); ?></h2>
                             </div>
-                            
+
                             <div class="pos-grid">
                                 <div class="pos-col-6">
                                     <div class="pos-card" style="padding: 25px; background: var(--pos-secondary); border: none; height: 100%;">
                                         <label class="d-flex align-center gap-2 mb-3" style="cursor: pointer; font-size: 1.2rem; font-weight: 700; color: var(--pos-text-main);">
-                                            <input type="checkbox" 
-                                                   name="barkod_telegram_enable_sale_notifications" 
-                                                   value="1" 
+                                            <input type="checkbox"
+                                                   name="barkod_telegram_enable_sale_notifications"
+                                                   value="1"
                                                    style="width: 22px !important; height: 22px !important;"
                                                    <?php checked(get_option('barkod_telegram_enable_sale_notifications'), '1'); ?>>
-                                            Satış Bildirimleri
+                                            <?php echo esc_html__('Satış Bildirimleri', 'barkod-sistemi'); ?>
                                         </label>
-                                        <p style="margin: 0; color: var(--pos-primary-light); font-size: 0.95rem;">Her başarılı satışta anlık bilgi mesajı gönderir.</p>
+                                        <p style="margin: 0; color: var(--pos-primary-light); font-size: 0.95rem;"><?php echo esc_html__('Her başarılı satışta anlık bilgi mesajı gönderir.', 'barkod-sistemi'); ?></p>
                                     </div>
                                 </div>
-                                
+
                                 <div class="pos-col-6">
                                     <div class="pos-card" style="padding: 25px; background: var(--pos-secondary); border: none; height: 100%;">
                                         <label class="d-flex align-center gap-2 mb-3" style="cursor: pointer; font-size: 1.2rem; font-weight: 700; color: var(--pos-text-main);">
-                                            <input type="checkbox" 
-                                                   name="barkod_telegram_enable_security_alerts" 
-                                                   value="1" 
+                                            <input type="checkbox"
+                                                   name="barkod_telegram_enable_security_alerts"
+                                                   value="1"
                                                    style="width: 22px !important; height: 22px !important;"
                                                    <?php checked(get_option('barkod_telegram_enable_security_alerts'), '1'); ?>>
-                                            Güvenlik Uyarıları
+                                            <?php echo esc_html__('Güvenlik Uyarıları', 'barkod-sistemi'); ?>
                                         </label>
-                                        <p style="margin: 0; color: var(--pos-primary-light); font-size: 0.95rem;">Şüpheli giriş denemeleri ve sistem hatalarını bildirir.</p>
+                                        <p style="margin: 0; color: var(--pos-primary-light); font-size: 0.95rem;"><?php echo esc_html__('Şüpheli giriş denemeleri ve sistem hatalarını bildirir.', 'barkod-sistemi'); ?></p>
                                     </div>
                                 </div>
-                                
+
                                 <div class="pos-col-12">
                                     <div class="pos-card" style="padding: 30px; border: 2px dashed var(--pos-primary-light); background: white;">
                                         <div class="d-flex justify-between align-center mb-4">
                                             <label class="d-flex align-center gap-2" style="cursor: pointer; font-size: 1.3rem; font-weight: 700; color: var(--pos-text-main);">
-                                                <input type="checkbox" 
-                                                       name="barkod_telegram_enable_stock_alerts" 
-                                                       value="1" 
+                                                <input type="checkbox"
+                                                       name="barkod_telegram_enable_stock_alerts"
+                                                       value="1"
                                                        style="width: 24px !important; height: 24px !important;"
                                                        <?php checked(get_option('barkod_telegram_enable_stock_alerts'), '1'); ?>>
-                                                Düşük Stok Uyarıları
+                                                <?php echo esc_html__('Düşük Stok Uyarıları', 'barkod-sistemi'); ?>
                                             </label>
                                             <div class="d-flex align-center gap-2">
-                                                <span class="pos-label" style="margin:0;">Eşik:</span>
-                                                <input type="number" 
-                                                       name="barkod_telegram_stock_threshold" 
-                                                       value="<?php echo esc_attr(get_option('barkod_telegram_stock_threshold', '10')); ?>" 
-                                                       min="1" 
-                                                       max="100" 
+                                                <span class="pos-label" style="margin:0;"><?php echo esc_html__('Eşik:', 'barkod-sistemi'); ?></span>
+                                                <input type="number"
+                                                       name="barkod_telegram_stock_threshold"
+                                                       value="<?php echo esc_attr(get_option('barkod_telegram_stock_threshold', '10')); ?>"
+                                                       min="1"
+                                                       max="100"
                                                        class="pos-input"
                                                        style="width: 100px; padding: 10px 15px;">
-                                                <span style="font-weight: 700; color: var(--pos-primary);">ADET</span>
+                                                <span style="font-weight: 700; color: var(--pos-primary);"><?php echo esc_html__('ADET', 'barkod-sistemi'); ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -231,17 +231,17 @@ class Barkod_Telegram_Settings {
                                     <div class="pos-card" style="padding: 30px; border: 2px dashed var(--pos-primary-light); background: white;">
                                         <div class="d-flex justify-between align-center">
                                             <label class="d-flex align-center gap-2" style="cursor: pointer; font-size: 1.3rem; font-weight: 700; color: var(--pos-text-main);">
-                                                <input type="checkbox" 
-                                                       name="barkod_telegram_enable_daily_reports" 
-                                                       value="1" 
+                                                <input type="checkbox"
+                                                       name="barkod_telegram_enable_daily_reports"
+                                                       value="1"
                                                        style="width: 24px !important; height: 24px !important;"
                                                        <?php checked(get_option('barkod_telegram_enable_daily_reports'), '1'); ?>>
-                                                Günlük Özet Raporu
+                                                <?php echo esc_html__('Günlük Özet Raporu', 'barkod-sistemi'); ?>
                                             </label>
                                             <div class="d-flex align-center gap-2">
-                                                <span class="pos-label" style="margin:0;">Rapor Saati:</span>
-                                                <input type="time" 
-                                                       name="barkod_telegram_report_time" 
+                                                <span class="pos-label" style="margin:0;"><?php echo esc_html__('Rapor Saati:', 'barkod-sistemi'); ?></span>
+                                                <input type="time"
+                                                       name="barkod_telegram_report_time"
                                                        value="<?php echo esc_attr(get_option('barkod_telegram_report_time', '09:00')); ?>"
                                                        class="pos-input"
                                                        style="width: auto; padding: 10px 15px;">
@@ -251,26 +251,26 @@ class Barkod_Telegram_Settings {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Bot Komutları -->
                         <div class="telegram-section">
                             <div class="telegram-header">
                                 <div class="telegram-icon">⚡</div>
-                                <h2 style="font-size: 1.8rem; margin: 0;">Bot Komutları</h2>
+                                <h2 style="font-size: 1.8rem; margin: 0;"><?php echo esc_html__('Bot Komutları', 'barkod-sistemi'); ?></h2>
                             </div>
-                            
+
                             <div class="pos-form-group">
                                 <label class="d-flex align-center gap-2" style="cursor: pointer; font-size: 1.2rem; font-weight: 700; color: var(--pos-text-main);">
-                                    <input type="checkbox" 
-                                           name="barkod_telegram_enable_commands" 
-                                           value="1" 
+                                    <input type="checkbox"
+                                           name="barkod_telegram_enable_commands"
+                                           value="1"
                                            style="width: 22px !important; height: 22px !important;"
                                            <?php checked(get_option('barkod_telegram_enable_commands'), '1'); ?>>
-                                    İnteraktif Komutlar
+                                    <?php echo esc_html__('İnteraktif Komutlar', 'barkod-sistemi'); ?>
                                 </label>
-                                
+
                                 <div style="background: var(--pos-secondary); padding: 30px; border-radius: var(--pos-radius-md); margin-top: 25px;">
-                                    <strong style="display: block; margin-bottom: 20px; color: var(--pos-text-main); font-size: 1.2rem; font-family: var(--font-display);">Kullanılabilir Komutlar:</strong>
+                                    <strong style="display: block; margin-bottom: 20px; color: var(--pos-text-main); font-size: 1.2rem; font-family: var(--font-display);"><?php echo esc_html__('Kullanılabilir Komutlar:', 'barkod-sistemi'); ?></strong>
                                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                                         <code style="background: white; padding: 10px 15px; border-radius: 10px; border: 1px solid var(--pos-border); color: var(--pos-text-main); font-weight: 600;">/musteri [tel]</code>
                                         <code style="background: white; padding: 10px 15px; border-radius: 10px; border: 1px solid var(--pos-border); color: var(--pos-text-main); font-weight: 600;">/stok [barkod]</code>
@@ -281,22 +281,22 @@ class Barkod_Telegram_Settings {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="pos-form-group" style="margin-top: 30px;">
-                                <label class="pos-label" for="barkod_telegram_admin_users">Yetkili Kullanıcılar</label>
-                                <input type="text" 
-                                       name="barkod_telegram_admin_users" 
-                                       value="<?php echo esc_attr(implode(', ', get_option('barkod_telegram_admin_users', []))); ?>" 
+                                <label class="pos-label" for="barkod_telegram_admin_users"><?php echo esc_html__('Yetkili Kullanıcılar', 'barkod-sistemi'); ?></label>
+                                <input type="text"
+                                       name="barkod_telegram_admin_users"
+                                       value="<?php echo esc_attr(implode(', ', get_option('barkod_telegram_admin_users', []))); ?>"
                                        class="pos-input"
                                        placeholder="123456789, 987654321">
                                 <p class="description" style="margin-top: 10px; color: var(--pos-text-muted);">
-                                    Yönetim komutlarını kullanabilecek Telegram ID'leri (virgülle ayırın).
+                                    <?php echo esc_html__("Yönetim komutlarını kullanabilecek Telegram ID'leri (virgülle ayırın).", 'barkod-sistemi'); ?>
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div style="text-align: right; margin-top: 50px;">
-                            <?php submit_button('Ayarları Kaydet', 'primary', 'submit', false, ['class' => 'pos-btn pos-btn-primary', 'style' => 'width: 100%; max-width: 300px;']); ?>
+                            <?php submit_button(__('Ayarları Kaydet', 'barkod-sistemi'), 'primary', 'submit', false, ['class' => 'pos-btn pos-btn-primary', 'style' => 'width: 100%; max-width: 300px;']); ?>
                         </div>
                     </form>
                 </div>
@@ -306,40 +306,40 @@ class Barkod_Telegram_Settings {
                     <div class="pos-card" style="background: var(--pos-secondary); border: none; position: sticky; top: 30px;">
                         <div class="d-flex align-center gap-2 mb-4">
                             <span class="mod-icon" style="font-size: 2rem;">💡</span>
-                            <h3 style="margin:0; font-size: 1.5rem;">Nasıl Kurulur?</h3>
+                            <h3 style="margin:0; font-size: 1.5rem;"><?php echo esc_html__('Nasıl Kurulur?', 'barkod-sistemi'); ?></h3>
                         </div>
                         <ul style="margin: 0; padding: 0; list-style: none; color: var(--pos-text-main); font-weight: 500;">
                             <li style="margin-bottom: 20px; display: flex; gap: 15px;">
                                 <span style="background: var(--pos-primary); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">1</span>
-                                <span>Telegram'da <strong>@BotFather</strong>'ı bulun ve <code>/newbot</code> ile botunuzu oluşturun.</span>
+                                <span><?php echo wp_kses(sprintf(__("Telegram'da <strong>@BotFather</strong>'ı bulun ve <code>/newbot</code> ile botunuzu oluşturun.", 'barkod-sistemi')), ['strong' => [], 'code' => []]); ?></span>
                             </li>
                             <li style="margin-bottom: 20px; display: flex; gap: 15px;">
                                 <span style="background: var(--pos-primary); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">2</span>
-                                <span>Size verilen <strong>Bot Token</strong>'ı kopyalayıp sola yapıştırın.</span>
+                                <span><?php echo wp_kses(__("Size verilen <strong>Bot Token</strong>'ı kopyalayıp sola yapıştırın.", 'barkod-sistemi'), ['strong' => []]); ?></span>
                             </li>
                             <li style="margin-bottom: 20px; display: flex; gap: 15px;">
                                 <span style="background: var(--pos-primary); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">3</span>
-                                <span>Botunuza bir mesaj gönderin ve <strong>Chat ID</strong>'nizi alın.</span>
+                                <span><?php echo wp_kses(__("Botunuza bir mesaj gönderin ve <strong>Chat ID</strong>'nizi alın.", 'barkod-sistemi'), ['strong' => []]); ?></span>
                             </li>
                             <li style="display: flex; gap: 15px;">
                                 <span style="background: var(--pos-primary); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">4</span>
-                                <span>Tüm ayarları kaydedip <strong>Bağlantı Testi</strong> yapın.</span>
+                                <span><?php echo wp_kses(__('Tüm ayarları kaydedip <strong>Bağlantı Testi</strong> yapın.', 'barkod-sistemi'), ['strong' => []]); ?></span>
                             </li>
                         </ul>
 
                         <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid rgba(45, 90, 39, 0.1);">
-                            <h4 style="margin-bottom: 20px; font-size: 1.2rem;">Bağlantı Testi</h4>
+                            <h4 style="margin-bottom: 20px; font-size: 1.2rem;"><?php echo esc_html__('Bağlantı Testi', 'barkod-sistemi'); ?></h4>
                             <button type="button" class="pos-btn pos-btn-secondary w-full" onclick="testTelegramBot()">
-                                <span class="dashicons dashicons-email-alt"></span> Test Mesajı Gönder
+                                <span class="dashicons dashicons-email-alt"></span> <?php echo esc_html__('Test Mesajı Gönder', 'barkod-sistemi'); ?>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <script>
             function testTelegramBot() {
-                if (confirm('Test mesajı göndermek istediğinize emin misiniz?')) {
+                if (confirm('<?php echo esc_js(__('Test mesajı göndermek istediğinize emin misiniz?', 'barkod-sistemi')); ?>')) {
                     fetch(ajaxurl, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -350,7 +350,7 @@ class Barkod_Telegram_Settings {
                     })
                     .then(r => r.json())
                     .then(data => {
-                        alert(data.success ? '✅ Test mesajı gönderildi!' : '❌ Hata: ' + data.data);
+                        alert(data.success ? '<?php echo esc_js(__('✅ Test mesajı gönderildi!', 'barkod-sistemi')); ?>' : '<?php echo esc_js(__('❌ Hata: ', 'barkod-sistemi')); ?>' + data.data);
                     });
                 }
             }

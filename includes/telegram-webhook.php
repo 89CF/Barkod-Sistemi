@@ -80,7 +80,7 @@ if (strpos($text, '/') === 0) {
         $admin_telegram_users = get_option('barkod_telegram_admin_users', []);
         
         if (!in_array($telegram_user_id, $admin_telegram_users)) {
-            $response = "❌ Bu komut için yetkiniz yok.\n\nSadece yetkili kullanıcılar yönetim komutlarını kullanabilir.";
+            $response = __("❌ Bu komut için yetkiniz yok.\n\nSadece yetkili kullanıcılar yönetim komutlarını kullanabilir.", 'barkod-sistemi');
             
             // Send unauthorized response
             $bot_token = get_option('barkod_telegram_bot_token');
